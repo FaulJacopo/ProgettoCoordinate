@@ -1,97 +1,103 @@
-const express = require('express')
 const log = require('../utility/logger')
-const database = require('../config/database')
-const utility = require('../utility/utility')
-const validator = require('../utility/validator')
-const mw = require('../middlewares/check')
-const rateLimit = require('express-rate-limit')
-const config = require('../config/config')
 const caseService = require('../services/case.service')
 
-// Create Method
-
-exports.createCase = async (title, reference, analyst) => {
+exports.createCase = async (req, res) => {
     try {
+        const { title, reference, analyst } = req.body
         log.Info(`[CASE CONTROLLER] - Requested method to create case - Passing through the Case Service`)
 
-        let cases = await caseService.createCase(title, reference, analyst)
-        return cases
+        const cases = await caseService.createCase(title, reference, analyst)
+        if (cases === false || cases === undefined) {
+            return res.status(500).json({ error: 'Errore durante la creazione del caso.' })
+        }
 
+        return res.json({ cases: JSON.stringify(cases) })
     } catch (error) {
-        log.Error(`[CASE CONTROLLER] - Error while creating the case`)
-        return false
+        log.Error(`[CASE CONTROLLER] - Error while creating the case: ${error}`)
+        return res.status(500).json({ error: 'Errore durante la creazione del caso.' })
     }
 }
 
-exports.getCases = async () => {
-    try {   
+exports.getCases = async (req, res) => {
+    try {
         log.Info(`[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service`)
 
-        let cases = await caseService.getCases()
-        return cases
-        
+        const cases = await caseService.getCases()
+        if (cases === false) {
+            return res.status(500).json({ error: 'Errore durante il recupero dei casi.' })
+        }
+
+        return res.json({ cases: JSON.stringify(cases) })
     } catch (error) {
-        log.Error(`[CASE CONTROLLER] - Error while getting cases`)
-        return false
+        log.Error(`[CASE CONTROLLER] - Error while getting cases: ${error}`)
+        return res.status(500).json({ error: 'Errore durante il recupero dei casi.' })
     }
 }
 
-exports.getCaseById = async (case_id) => {
+exports.getCaseById = async (req, res) => {
     try {
+        const { case_id } = req.body
         log.Info(`[CASE CONTROLLER] - Requested method to get case by ID - Passing through the Case Service`)
 
-        let sel_case = await caseService.getCaseById(case_id)
-        return sel_case
+        const selectedCase = await caseService.getCaseById(case_id)
+        if (selectedCase === false) {
+            return res.status(404).json({ error: 'Caso non trovato.' })
+        }
+
+        return res.json(selectedCase)
     } catch (error) {
         log.Error(`[CASE CONTROLLER] - Error while getting case by ID: ${error}`)
-        return false
+        return res.status(500).json({ error: 'Errore durante il recupero del caso.' })
     }
 }
 
-exports.getCaseByUrl = async (url) => {
+exports.getCaseByUrl = async (req, res) => {
     try {
+        const { url } = req.body
         log.Info(`[CASE CONTROLLER] - Requested method to get case by URL - Passing through the Case Service`)
 
-        let sel_case = await caseService.getCaseByUrl(url)
-        return sel_case
+        const selectedCase = await caseService.getCaseByUrl(url)
+        if (selectedCase === false) {
+            return res.status(404).json({ error: 'Caso non trovato.' })
+        }
+
+        return res.json(selectedCase)
     } catch (error) {
         log.Error(`[CASE CONTROLLER] - Error while getting case by URL: ${error}`)
-        return false
+        return res.status(500).json({ error: 'Errore durante il recupero del caso.' })
     }
 }
 
-exports.getCaseByCaseId = async (case_id) => {
+exports.updateCase = async (req, res) => {
     try {
-        log.Info(`[CASE CONTROLLER] - Requested method to get case by Case ID - Passing through the Case Service`)
+        const { case_id, title, reference, analyst } = req.body
+        log.Info(`[CASE CONTROLLER] - Requested method to update case - Passing through the Case Service`)
 
-        let sel_case = await caseService.getCaseByCaseId(case_id)
-        return sel_case
-    } catch (error) {
-        log.Error(`[CASE CONTROLLER] - Error while getting case by Case ID: ${error}`)
-        return false
-    }
-}
+        const updatedCase = await caseService.updateCase(case_id, title, reference, analyst)
+        if (updatedCase === false || updatedCase === undefined) {
+            return res.status(404).json({ error: 'Caso non trovato o non aggiornato.' })
+        }
 
-exports.updateCase = async (case_id, title, reference, analyst) => {
-    try {
-        log.Info(`[CASE CONTROLLER] - Requested method to update case - Passing through the Case Service`) 
-
-        let updated_case = await caseService.updateCase(case_id, title, reference, analyst)
-        return updated_case
+        return res.json({ cases: JSON.stringify(updatedCase) })
     } catch (error) {
         log.Error(`[CASE CONTROLLER] - Error while updating case: ${error}`)
-        return false
+        return res.status(500).json({ error: 'Errore durante l\'aggiornamento del caso.' })
     }
 }
 
-exports.deleteCase = async (case_id) => {
+exports.deleteCase = async (req, res) => {
     try {
+        const { case_id } = req.body
         log.Info(`[CASE CONTROLLER] - Requested method to delete case - Passing through the Case Service`)
 
-        let deleted_case = await caseService.deleteCase(case_id)
-        return deleted_case
+        const cases = await caseService.deleteCase(case_id)
+        if (cases === false || cases === undefined) {
+            return res.status(404).json({ error: 'Caso non trovato o non eliminato.' })
+        }
+
+        return res.json({ cases: JSON.stringify(cases) })
     } catch (error) {
         log.Error(`[CASE CONTROLLER] - Error while deleting case: ${error}`)
-        return false
+        return res.status(500).json({ error: 'Errore durante l\'eliminazione del caso.' })
     }
 }

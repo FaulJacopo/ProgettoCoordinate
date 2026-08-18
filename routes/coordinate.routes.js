@@ -14,7 +14,4 @@ router.post('/get-coordinate-by-id',  coordinateController.getCoordinateById)
 router.post('/get-coordinate-by-case-id',  coordinateController.getCoordinateByCaseId)
 router.post('/create-coordinate',  coordinateController.createCoordinate)
 
-
-
-
 module.exports = router

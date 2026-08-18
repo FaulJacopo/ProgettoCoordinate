@@ -3,6 +3,7 @@ function loadCases() {
     $.post('/cases/get-cases', {}, async function(res) {
         if (res.error) {
             showErrorNotification(res.error)
+            window.location.href = res.redirect
         } else {
             let cases = JSON.parse(res.cases)
             let cases_content = ""
@@ -25,8 +26,10 @@ function addCase(form) {
         $.post('/cases/create-case', { title, reference, analyst }, async function(res) {
             if (res.error) {
                 showErrorNotification(res.error)
+                window.location.href = res.redirect
             } else {
-                window.location.href = `/cases/${res.url}`
+                let received_case = JSON.parse(res.case)
+                window.location.href = `/cases/${received_case.url}`
             }
         })
     } else {

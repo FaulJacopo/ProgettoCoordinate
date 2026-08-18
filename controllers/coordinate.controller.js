@@ -1,94 +1,120 @@
-const express = require('express')
 const log = require('../utility/logger')
-const database = require('../config/database')
-const utility = require('../utility/utility')
-const validator = require('../utility/validator')
-const mw = require('../middlewares/check')
-const rateLimit = require('express-rate-limit')
-const config = require('../config/config')
-
 const coordinateService = require('../services/coordinate.service')
 
-// Create Method
-
-exports.createCoordinate = async (x, y, caseId) => {
+exports.createCoordinate = async (req, res) => {
     try {
+        const { text_id, lat, lng, case_id, position } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service`)
 
-        let coordinate = await coordinateService.createCoordinate(x, y, caseId)
-        return coordinate
+        const coordinates = await coordinateService.createCoordinate(text_id, lat, lng, case_id, position)
+        if (coordinates === false || coordinates === undefined) {
+            return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
+        }
 
+        return res.json({ coordinates: JSON.stringify(coordinates) })
     } catch (error) {
-        log.Error(`[COORDINATE CONTROLLER] - Error while creating the coordinate`)
-        return false
+        log.Error(`[COORDINATE CONTROLLER] - Error while creating the coordinate: ${error}`)
+        return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
     }
 }
 
-
-exports.getCoordinates = async () => {
+exports.getCoordinates = async (req, res) => {
     try {
         log.Info(`[COORDINATE CONTROLLER] - Requested method to get coordinates - Passing through the Coordinate Service`)
 
-        let coordinates = await coordinateService.getCoordinates()
-        return coordinates
+        const coordinates = await coordinateService.getCoordinates()
+        if (coordinates === false) {
+            return res.status(500).json({ error: 'Errore durante il recupero delle coordinate.' })
+        }
 
+        return res.json({ coordinates: JSON.stringify(coordinates) })
     } catch (error) {
-        log.Error(`[COORDINATE CONTROLLER] - Error while getting the coordinate`)
-        return false
+        log.Error(`[COORDINATE CONTROLLER] - Error while getting the coordinates: ${error}`)
+        return res.status(500).json({ error: 'Errore durante il recupero delle coordinate.' })
     }
 }
 
-
-exports.getCoordinateById = async (id) => {
+exports.getCoordinateById = async (req, res) => {
     try {
+        const { id } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to get coordinate by ID - Passing through the Coordinate Service`)
 
-        let coordinate = await coordinateService.getCoordinateById(id)
-        return coordinate
+        const coordinate = await coordinateService.getCoordinateById(id)
+        if (coordinate === false) {
+            return res.status(404).json({ error: 'Coordinata non trovata.' })
+        }
 
+        return res.json(coordinate)
     } catch (error) {
-        log.Error(`[COORDINATE CONTROLLER] - Error while getting the coordinate`)
-        return false
+        log.Error(`[COORDINATE CONTROLLER] - Error while getting the coordinate: ${error}`)
+        return res.status(500).json({ error: 'Errore durante il recupero della coordinata.' })
     }
 }
 
-
-exports.getCoordinateByCaseId = async (caseId) => {
+exports.getCoordinateByCaseId = async (req, res) => {
     try {
+        const { case_id } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to get coordinate by case ID - Passing through the Coordinate Service`)
 
-        let coordinate = await coordinateService.getCoordinateByCaseId(caseId)
-        return coordinate
+        const coordinates = await coordinateService.getCoordinateByCaseId(case_id)
+        if (coordinates === false) {
+            return res.status(404).json({ error: 'Coordinate non trovate.' })
+        }
 
+        return res.json({ coordinates: JSON.stringify(coordinates) })
     } catch (error) {
-        log.Error(`[COORDINATE CONTROLLER] - Error while getting the coordinate`)
-        return false
+        log.Error(`[COORDINATE CONTROLLER] - Error while getting the coordinates: ${error}`)
+        return res.status(500).json({ error: 'Errore durante il recupero delle coordinate.' })
     }
 }
 
-exports.updateCoordinate = async (id, x, y) => {
+exports.updateCoordinate = async (req, res) => {
     try {
+        const { id, text_id, lat, lng, position } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to update coordinate - Passing through the Coordinate Service`)
-        
-        let coordinate = await coordinateService.updateCoordinate(id, x, y)
-        return coordinate
 
+        const coordinate = await coordinateService.updateCoordinate(id, text_id, lat, lng, position)
+        if (coordinate === false || coordinate === undefined) {
+            return res.status(404).json({ error: 'Coordinata non trovata o non aggiornata.' })
+        }
+
+        return res.json(coordinate)
     } catch (error) {
-        log.Error(`[COORDINATE CONTROLLER] - Error while updating the coordinate`)
-        return false
+        log.Error(`[COORDINATE CONTROLLER] - Error while updating the coordinate: ${error}`)
+        return res.status(500).json({ error: 'Errore durante l\'aggiornamento della coordinata.' })
     }
 }
 
-
-exports.deleteCoordinate = async (id) => {
+exports.deleteCoordinate = async (req, res) => {
     try {
+        const { id } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to delete coordinate - Passing through the Coordinate Service`)
 
-        let coordinate = await coordinateService.deleteCoordinate(id)
-        return coordinate
+        const coordinates = await coordinateService.deleteCoordinate(id)
+        if (coordinates === false || coordinates === undefined) {
+            return res.status(404).json({ error: 'Coordinata non trovata o non eliminata.' })
+        }
 
+        return res.json({ coordinates: JSON.stringify(coordinates) })
     } catch (error) {
-        log.Error(`[COORDINATE CONTROLLER] - Error while deleting the coordinate`)
-        return false
+        log.Error(`[COORDINATE CONTROLLER] - Error while deleting the coordinate: ${error}`)
+        return res.status(500).json({ error: 'Errore durante l\'eliminazione della coordinata.' })
+    }
+}
+
+exports.saveCoordinate = async (req, res) => {
+    try {
+        const { text_id, lat, lng, position } = req.body
+        log.Info(`[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service`)
+
+        const coordinates = await coordinateService.createCoordinate(text_id, lat, lng, req.session.case.id, position)
+        if (coordinates === false || coordinates === undefined) {
+            return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
+        }
+
+        return res.json({ coordinates: JSON.stringify(coordinates) })
+    } catch (error) {
+        log.Error(`[COORDINATE CONTROLLER] - Error while creating the coordinate: ${error}`)
+        return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
     }
 }

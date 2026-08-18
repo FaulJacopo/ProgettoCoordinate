@@ -36,3 +36,7 @@ function addCase(form) {
         showErrorNotification('Please fill in the required fields.')
     }
 }
+
+$(document).ready(() => {
+    loadCases()
+})

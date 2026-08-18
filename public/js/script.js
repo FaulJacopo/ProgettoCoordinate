@@ -1,33 +1,216 @@
 
 let coordinates = [];
 let coordinate_view = $('#coordinate-list')
+let coordinate_markers = [];
+const selected_cell_ids = new Set();
+const button = document.getElementById('import-excel');
+const fileInput = document.getElementById('excel-file');
+const cellFilterPanel = document.getElementById('cell-filter-panel');
+const cellFilterList = document.getElementById('cell-filter-list');
+const clearCellFiltersButton = document.getElementById('clear-cell-filters');
+
+clearCellFiltersButton?.addEventListener('click', () => {
+    selected_cell_ids.clear();
+    renderCellFilters();
+    applyCellFilters();
+});
+
+button?.addEventListener('click', () => {
+    fileInput.click();
+});
+
+fileInput?.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('excel', file);
+
+    try {
+
+        const response = await fetch('/coordinates/import', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            showErrorNotification(result.error || 'Errore durante l\'importazione del file.');
+            return;
+        }
+
+        coordinates = JSON.parse(result.coordinates);
+        refreshCoordinates();
+
+    } catch (error) {
+        showErrorNotification(error.message || 'Errore durante l\'importazione del file.');
+    } finally {
+        fileInput.value = '';
+    }
+});
 
 function addCoordinate(form) {
     const lat = form.latitude.value;
     const lng = form.longitude.value;
     const text_identifier = form.description.value;
+    const cell_id = Number(form.cell_id.value);
 
-    if (lat && lng) {
-        const coordinate = { lat: parseFloat(lat), lng: parseFloat(lng), text_identifier: text_identifier };
+    if (lat && lng && Number.isInteger(cell_id)) {
+        const coordinate = { latitude: parseFloat(lat), longitude: parseFloat(lng), text_identifier: text_identifier, cell_id };
         coordinates.push(coordinate);
         updateMap(coordinates.length - 1);
         updateViewCoordinate();
+        renderCellFilters();
+        applyCellFilters();
         form.reset();
     }
 }
 
 function updateMap(coordinate_index) {
-    const latitude = getCoordinateValue(coordinates[coordinate_index], 'lat', 'latitude');
-    const longitude = getCoordinateValue(coordinates[coordinate_index], 'lng', 'longitude');
+    const coordinate = coordinates[coordinate_index];
+    const latitude = getCoordinateValue(coordinate, 'lat', 'latitude');
+    const longitude = getCoordinateValue(coordinate, 'lng', 'longitude');
+    const marker_color = cellIdToColor(coordinate.cell_id);
+    const marker_icon = L.divIcon({
+        className: 'cell-marker-icon',
+        html: `<span class="cell-marker" style="--marker-color: ${marker_color}"></span>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 28],
+        popupAnchor: [0, -28]
+    });
     const popupContent = `
         <div style="min-width: 180px;">
-        <strong>${coordinates[coordinate_index].text_identifier}</strong><br>
+        <strong>${coordinate.text_identifier}</strong><br>
         Latitude: ${latitude ?? '-'}<br>
         Longitude: ${longitude ?? '-'}<br>
+        Cell ID: ${coordinate.cell_id ?? '-'}
         </div>
     `;
 
-    L.marker([latitude, longitude]).addTo(map).bindPopup(popupContent);
+    const marker = L.marker([latitude, longitude], { icon: marker_icon }).bindPopup(popupContent);
+    coordinate_markers.push({ marker, cell_id: String(coordinate.cell_id) });
+    marker.addTo(map);
+}
+
+function refreshCoordinates() {
+    coordinate_markers.forEach(({ marker }) => map.removeLayer(marker));
+    coordinate_markers = [];
+
+    coordinates.forEach((_, index) => updateMap(index));
+    updateViewCoordinate();
+    renderCellFilters();
+    applyCellFilters();
+}
+
+function getUniqueCellIds() {
+    return [...new Set(coordinates
+        .map(coordinate => coordinate.cell_id)
+        .filter(cell_id => cell_id !== null && cell_id !== undefined)
+        .map(String))]
+        .sort((first, second) => Number(first) - Number(second));
+}
+
+function renderCellFilters() {
+    const cell_ids = getUniqueCellIds();
+    const available_cell_ids = new Set(cell_ids);
+
+    for (const selected_cell_id of selected_cell_ids) {
+        if (!available_cell_ids.has(selected_cell_id)) {
+            selected_cell_ids.delete(selected_cell_id);
+        }
+    }
+
+    cellFilterList.replaceChildren();
+    cellFilterPanel.classList.toggle('hidden', cell_ids.length === 0);
+    clearCellFiltersButton.classList.toggle('hidden', selected_cell_ids.size === 0);
+
+    cell_ids.forEach(cell_id => {
+        const marker_color = cellIdToColor(cell_id);
+        const is_selected = selected_cell_ids.has(cell_id);
+        const badge = document.createElement('button');
+
+        badge.type = 'button';
+        badge.className = 'cell-filter-badge';
+        badge.textContent = cell_id;
+        badge.setAttribute('aria-pressed', String(is_selected));
+        badge.style.setProperty('--cell-color', marker_color);
+        badge.style.setProperty('--cell-contrast', getContrastColor(marker_color));
+        badge.addEventListener('click', () => toggleCellFilter(cell_id));
+        cellFilterList.appendChild(badge);
+    });
+}
+
+function toggleCellFilter(cell_id) {
+    if (selected_cell_ids.has(cell_id)) {
+        selected_cell_ids.delete(cell_id);
+    } else {
+        selected_cell_ids.add(cell_id);
+    }
+
+    renderCellFilters();
+    applyCellFilters();
+}
+
+function applyCellFilters() {
+    coordinate_markers.forEach(({ marker, cell_id }) => {
+        const should_be_visible = selected_cell_ids.size === 0 || selected_cell_ids.has(cell_id);
+        const is_visible = map.hasLayer(marker);
+
+        if (should_be_visible && !is_visible) {
+            marker.addTo(map);
+        } else if (!should_be_visible && is_visible) {
+            map.removeLayer(marker);
+        }
+    });
+}
+
+function cellIdToColor(cell_id) {
+    let hash = Number(cell_id) >>> 0;
+
+    hash ^= hash >>> 16;
+    hash = Math.imul(hash, 0x7feb352d);
+    hash ^= hash >>> 15;
+    hash = Math.imul(hash, 0x846ca68b);
+    hash ^= hash >>> 16;
+
+    const hue = (hash >>> 0) % 360;
+    const saturation = 72 + ((hash >>> 8) % 9);
+    const lightness = 42 + ((hash >>> 16) % 7);
+    return hslToHex(hue, saturation, lightness);
+}
+
+function hslToHex(hue, saturation, lightness) {
+    const normalized_saturation = saturation / 100;
+    const normalized_lightness = lightness / 100;
+    const chroma = (1 - Math.abs(2 * normalized_lightness - 1)) * normalized_saturation;
+    const intermediate = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
+    const offset = normalized_lightness - chroma / 2;
+    let red = 0;
+    let green = 0;
+    let blue = 0;
+
+    if (hue < 60) [red, green, blue] = [chroma, intermediate, 0];
+    else if (hue < 120) [red, green, blue] = [intermediate, chroma, 0];
+    else if (hue < 180) [red, green, blue] = [0, chroma, intermediate];
+    else if (hue < 240) [red, green, blue] = [0, intermediate, chroma];
+    else if (hue < 300) [red, green, blue] = [intermediate, 0, chroma];
+    else [red, green, blue] = [chroma, 0, intermediate];
+
+    return `#${[red, green, blue]
+        .map(channel => Math.round((channel + offset) * 255).toString(16).padStart(2, '0'))
+        .join('')}`;
+}
+
+function getContrastColor(hex_color) {
+    const red = parseInt(hex_color.slice(1, 3), 16);
+    const green = parseInt(hex_color.slice(3, 5), 16);
+    const blue = parseInt(hex_color.slice(5, 7), 16);
+    const luminance = (red * 299 + green * 587 + blue * 114) / 1000;
+    return luminance > 150 ? '#0f172a' : '#ffffff';
 }
 
 function getCoordinateValue(coordinate, short_name, database_name) {
@@ -56,15 +239,16 @@ function updateViewCoordinate() {
         const latitude = getCoordinateValue(element, 'lat', 'latitude');
         const longitude = getCoordinateValue(element, 'lng', 'longitude');
         const identifier = element.text_identifier?.trim() || 'Senza identificativo';
+        const marker_color = cellIdToColor(element.cell_id);
 
         const list_item = $('<li>', {
             class: 'flex items-start gap-3 px-5 py-4 transition hover:bg-slate-50'
         });
 
         const number = $('<span>', {
-            class: 'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-sm font-bold text-red-700',
+            class: 'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-white',
             text: index + 1
-        });
+        }).css('background-color', marker_color);
 
         const content = $('<div>', { class: 'min-w-0 flex-1' });
         const title = $('<p>', {
@@ -92,28 +276,34 @@ function updateViewCoordinate() {
             })
         );
 
-        coordinate_data.append(latitude_group, longitude_group);
+        const cell_id_group = $('<div>', { class: 'col-span-2 min-w-0' }).append(
+            $('<dt>', { class: 'text-xs font-medium text-slate-400', text: 'Cell ID' }),
+            $('<dd>', {
+                class: 'mt-0.5 truncate font-mono text-xs font-medium text-slate-600',
+                text: element.cell_id ?? '-'
+            })
+        );
+
+        coordinate_data.append(latitude_group, longitude_group, cell_id_group);
         content.append(title, coordinate_data);
         list_item.append(number, content);
         coordinate_view.append(list_item);
     });
 }
 
-function loadFromCSV() {
-    
-}
-
 function saveCaseCoordinates() {
-    coordinates.forEach((element, index) => {
-        $.post('/coordinates/save-coordinate', { lat: element.lat, lng: element.lng, position: index, text_id: element.text_id }, async function(res) {
+    let times = Math.ceil(coordinates.length / 1000)
+
+    for (let i = 0; i < times; i++) {
+        $.post('/coordinates/save-coordinate', { coordinates: JSON.stringify(coordinates.slice(i * 1000, (i + 1) * 1000)) }, async function(res) {
             if (res.error) {
                 showErrorNotification(res.error)
                 window.location.href = res.redirect
             } else {
-                console.log(`Coordinate ${index + 1} salvata con successo!`)
+                console.log(`Coordinate salvate con successo!`)
             }
         })
-    })
+    }
 }
 
 // Search if the coordinates are already present in the database and load them on the map.
@@ -125,8 +315,13 @@ function getCoordinatesByCase() {
             window.location.href = res.redirect
         } else {
             coordinates = JSON.parse(res.coordinates)
-            updateViewCoordinate()
-            coordinates.forEach((_, index) => updateMap(index))
+            refreshCoordinates()
         }
     })
 }
+
+$(document).ready(function() {
+    if (typeof map !== 'undefined' && cellFilterPanel) {
+        getCoordinatesByCase()
+    }
+})

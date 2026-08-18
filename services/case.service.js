@@ -54,7 +54,7 @@ exports.getCaseByUrl = async (url) => {
         log.Info(`[CASE SERVICE] - Received request to get the case from the database with URL: ${url}`)
     
         let sel_case = await Case.findOne({ where: { url } })
-        let sel_case_json = { title: sel_case.title, reference: sel_case.reference, analyst: sel_case.analyst, url: sel_case.url}
+        let sel_case_json = { id: sel_case.id, title: sel_case.title, reference: sel_case.reference, analyst: sel_case.analyst, url: sel_case.url}
     
         return sel_case_json
     } catch (error) {

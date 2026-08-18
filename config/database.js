@@ -34,14 +34,14 @@ async function initializeDatabase() {
       }
     }
   }
-  if (dbJustCreated) {
-      try {
+  try {
+      if (dbJustCreated) {
           await syncCaseTable();
-          await syncCoordinateTable();
-      } catch (error) {
-          logger.Error('Error during tables sync:', error);
-          throw error;
       }
+      await syncCoordinateTable();
+  } catch (error) {
+      logger.Error('Error during tables sync:', error);
+      throw error;
   }
 }
 

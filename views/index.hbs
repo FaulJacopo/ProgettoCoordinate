@@ -1,0 +1,68 @@
+{{>header}}
+
+<body class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+            <a href="/" class="flex items-center gap-3" aria-label="Coordinate dashboard">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-lg font-bold text-white shadow-sm">C</span>
+                <span>
+                    <span class="block text-sm font-semibold tracking-wide text-slate-950">Coordinate</span>
+                    <span class="block text-xs text-slate-500">Case workspace</span>
+                </span>
+            </a>
+            <div class="flex items-center gap-4">
+                <span class="hidden text-sm text-slate-500 sm:inline">Workspace / Cases</span>
+                <button type="button" class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white" aria-label="Open profile menu">JD</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
+        <div class="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+                <p class="mb-2 text-sm font-medium text-red-600">Workspace overview</p>
+                <h1 class="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">I tuoi casi</h1>
+                <p class="mt-2 max-w-xl text-sm leading-6 text-slate-500">Gestisci le analisi, ritrova rapidamente il lavoro recente e apri un nuovo caso quando vuoi.</p>
+            </div>
+            <a href="#new-case" class="inline-flex items-center justify-center rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"><span class="mr-2 text-lg leading-none">+</span>Nuovo caso</a>
+        </div>
+
+        <section class="mb-8 grid gap-4 sm:grid-cols-3" aria-label="Case summary">
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"><div class="flex items-center justify-between"><p class="text-sm font-medium text-slate-500">Casi totali</p><span class="text-xs font-medium text-emerald-600">+12% questo mese</span></div><p class="mt-3 text-3xl font-semibold text-slate-950">24</p></div>
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm font-medium text-slate-500">Aggiornati di recente</p><p class="mt-3 text-3xl font-semibold text-slate-950">08</p><p class="mt-1 text-xs text-slate-400">Negli ultimi 7 giorni</p></div>
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm font-medium text-slate-500">Ultimo accesso</p><p class="mt-3 text-3xl font-semibold text-slate-950">Oggi</p><p class="mt-1 text-xs text-slate-400">17 agosto 2026, 09:42</p></div>
+        </section>
+
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
+            <section class="min-w-0" aria-labelledby="cases-heading">
+                <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div><h2 id="cases-heading" class="text-lg font-semibold text-slate-950">Casi recenti</h2><p class="mt-1 text-sm text-slate-500">Seleziona un caso per continuare l'analisi.</p></div>
+                    <div class="flex gap-2"><label class="relative block min-w-0 flex-1 sm:w-56 sm:flex-none"><span class="sr-only">Cerca un caso</span><span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-xs font-semibold text-slate-400">SEARCH</span><input type="search" placeholder="Cerca un caso..." class="h-10 w-full rounded-lg border border-slate-200 bg-white pl-14 pr-3 text-sm text-slate-700 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></label><button type="button" class="hidden h-10 items-center rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-600 shadow-sm transition hover:border-slate-300 hover:text-slate-900 sm:inline-flex">Filtri</button></div>
+                </div>
+
+                <div id="cases-view" class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                    <ul id="cases-list" class="divide-y divide-slate-100" aria-label="Elenco dei casi">
+                        <li><a href="#" class="group flex items-center gap-4 px-5 py-4 transition hover:bg-slate-50 sm:px-6"><span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-red-50 text-sm font-bold text-red-700">01</span><span class="min-w-0 flex-1"><span class="flex flex-wrap items-center gap-2"><span class="truncate font-semibold text-slate-900 group-hover:text-red-700">Analisi area metropolitana</span><span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">Attivo</span></span><span class="mt-1 block truncate text-sm text-slate-500">Rif. GEO-2026-014 / Giulia Bianchi</span></span><span class="hidden text-right sm:block"><span class="block text-xs font-medium text-slate-700">Aggiornato oggi</span><span class="mt-1 block text-xs text-slate-400">09:42</span></span><span class="text-xl text-slate-300 transition group-hover:translate-x-1 group-hover:text-red-500" aria-hidden="true">&gt;</span></a></li>
+                        <li><a href="#" class="group flex items-center gap-4 px-5 py-4 transition hover:bg-slate-50 sm:px-6"><span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-sm font-bold text-amber-700">02</span><span class="min-w-0 flex-1"><span class="flex flex-wrap items-center gap-2"><span class="truncate font-semibold text-slate-900 group-hover:text-red-700">Rilievo infrastrutture nord</span><span class="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">In revisione</span></span><span class="mt-1 block truncate text-sm text-slate-500">Rif. INF-2026-009 / Marco Rossi</span></span><span class="hidden text-right sm:block"><span class="block text-xs font-medium text-slate-700">Aggiornato ieri</span><span class="mt-1 block text-xs text-slate-400">16:18</span></span><span class="text-xl text-slate-300 transition group-hover:translate-x-1 group-hover:text-red-500" aria-hidden="true">&gt;</span></a></li>
+                        <li><a href="#" class="group flex items-center gap-4 px-5 py-4 transition hover:bg-slate-50 sm:px-6"><span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-sm font-bold text-slate-600">03</span><span class="min-w-0 flex-1"><span class="flex flex-wrap items-center gap-2"><span class="truncate font-semibold text-slate-900 group-hover:text-red-700">Mappatura punti di interesse</span><span class="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">Archiviato</span></span><span class="mt-1 block truncate text-sm text-slate-500">Rif. MAP-2026-003 / Luca Ferri</span></span><span class="hidden text-right sm:block"><span class="block text-xs font-medium text-slate-700">12 ago 2026</span><span class="mt-1 block text-xs text-slate-400">11:06</span></span><span class="text-xl text-slate-300 transition group-hover:translate-x-1 group-hover:text-red-500" aria-hidden="true">&gt;</span></a></li>
+                    </ul>
+                    <div class="flex items-center justify-between border-t border-slate-100 px-5 py-3 text-xs text-slate-500 sm:px-6"><span>Mostrati 3 di 24 casi</span><a href="#" class="font-semibold text-red-600 hover:text-red-700">Vedi tutti <span aria-hidden="true">-&gt;</span></a></div>
+                </div>
+            </section>
+
+            <aside id="new-case" class="h-fit rounded-xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="new-case-heading">
+                <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-red-600 text-xl font-light text-white">+</div>
+                <h2 id="new-case-heading" class="text-lg font-semibold text-slate-950">Crea un nuovo caso</h2>
+                <p class="mt-1 text-sm leading-5 text-slate-500">Inserisci le informazioni di base per iniziare una nuova analisi.</p>
+                <form class="mt-6 space-y-4">
+                    <div><label for="case-title" class="mb-1.5 block text-sm font-medium text-slate-700">Nome del caso</label><input id="case-title" name="title" type="text" placeholder="Es. Rilievo urbano 2026" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                    <div><label for="case-reference" class="mb-1.5 block text-sm font-medium text-slate-700">Riferimento <span class="font-normal text-slate-400">(facoltativo)</span></label><input id="case-reference" name="reference" type="text" placeholder="Es. GEO-2026-025" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                    <div><label for="case-analyst" class="mb-1.5 block text-sm font-medium text-slate-700">Analista</label><input id="case-analyst" name="analyst" type="text" placeholder="Nome e cognome" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                    <button type="submit" class="mt-2 inline-flex h-10 w-full items-center justify-center rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">Crea caso <span class="ml-2" aria-hidden="true">-&gt;</span></button>
+                </form>
+            </aside>
+        </div>
+    </main>
+</body>
+
+{{>footer}}

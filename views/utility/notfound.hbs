@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinates Application - Pagina Non Trovata</title>
+    <script src="/js/others/tailwind.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.css" />
+</head>
+
+<body class="bg-gray-50">
+    <div class="min-h-screen flex flex-col">
+        <!-- Main Content -->
+        <main class="flex-1 flex items-center justify-center p-4">
+            <div class="w-full max-w-md">
+                <!-- Error Card -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="p-6 text-center">
+                        <div class="flex mb-6 w-full justify-center">
+                            <img src="/img/logo.png" class="w-32 rounded-full">
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">404</h2>
+                        <p class="mt-2 text-xl font-semibold text-gray-800">Pagina non trovata</p>
+                        <p class="mt-3 text-sm text-gray-600">Ci dispiace, la pagina che stai cercando non esiste o è stata spostata.</p>
+
+                        <div class="mt-6 space-y-3">
+                            <a href="/" class="block w-full px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors">
+                                Torna alla Dashboard
+                            </a>
+                            <button onclick="window.history.back()" class="block w-full px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors">
+                                Torna Indietro
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm text-gray-500">© <script>document.write(new Date().getFullYear())</script> Coordinates Application. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

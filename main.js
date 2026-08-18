@@ -12,6 +12,7 @@ const { initializeDatabase } = require('./config/database')
 const config = require('./config/config')
 
 const routerCoordinate = require('./routes/coordinate.routes')
+const routerCases = require('./routes/cases.routes')
 const routerAuth = require('./routes/auth.routes')
 
 //const csrfProtection = csrfDSC()
@@ -59,6 +60,7 @@ app.use(function (err, req, res, next) {
 })
 
 app.use('/coordinates', routerCoordinate)
+app.use('/cases', routerCases)
 app.use('/', routerAuth)
 
 app.use((req, res) => {

@@ -35,3 +35,63 @@ exports.getCases = async () => {
         return false
     }
 }
+
+exports.getCaseById = async (case_id) => {
+    try {
+        log.Info(`[CASE CONTROLLER] - Requested method to get case by ID - Passing through the Case Service`)
+
+        let sel_case = await caseService.getCaseById(case_id)
+        return sel_case
+    } catch (error) {
+        log.Error(`[CASE CONTROLLER] - Error while getting case by ID: ${error}`)
+        return false
+    }
+}
+
+exports.getCaseByUrl = async (url) => {
+    try {
+        log.Info(`[CASE CONTROLLER] - Requested method to get case by URL - Passing through the Case Service`)
+
+        let sel_case = await caseService.getCaseByUrl(url)
+        return sel_case
+    } catch (error) {
+        log.Error(`[CASE CONTROLLER] - Error while getting case by URL: ${error}`)
+        return false
+    }
+}
+
+exports.getCaseByCaseId = async (case_id) => {
+    try {
+        log.Info(`[CASE CONTROLLER] - Requested method to get case by Case ID - Passing through the Case Service`)
+
+        let sel_case = await caseService.getCaseByCaseId(case_id)
+        return sel_case
+    } catch (error) {
+        log.Error(`[CASE CONTROLLER] - Error while getting case by Case ID: ${error}`)
+        return false
+    }
+}
+
+exports.updateCase = async (case_id, title, reference, analyst) => {
+    try {
+        log.Info(`[CASE CONTROLLER] - Requested method to update case - Passing through the Case Service`) 
+
+        let updated_case = await caseService.updateCase(case_id, title, reference, analyst)
+        return updated_case
+    } catch (error) {
+        log.Error(`[CASE CONTROLLER] - Error while updating case: ${error}`)
+        return false
+    }
+}
+
+exports.deleteCase = async (case_id) => {
+    try {
+        log.Info(`[CASE CONTROLLER] - Requested method to delete case - Passing through the Case Service`)
+
+        let deleted_case = await caseService.deleteCase(case_id)
+        return deleted_case
+    } catch (error) {
+        log.Error(`[CASE CONTROLLER] - Error while deleting case: ${error}`)
+        return false
+    }
+}

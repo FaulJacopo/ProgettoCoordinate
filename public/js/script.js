@@ -33,3 +33,15 @@ function updateViewCoordinate() {
 function loadFromCSV() {
     
 }
+
+function saveCaseCoordinates() {
+    coordinates.forEach((element, index) => {
+        $.post('/coordinates/save-coordinate', { lat: element.lat, lng: element.lng }, async function(res) {
+            if (res.error) {
+                showErrorNotification(res.error)
+            } else {
+                console.log(`Coordinate ${index + 1} salvata con successo!`)
+            }
+        })
+    })
+}

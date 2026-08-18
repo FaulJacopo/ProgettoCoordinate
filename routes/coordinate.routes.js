@@ -7,26 +7,14 @@ const rateLimit = require('express-rate-limit')
 const config = require('../config/config')
 const router = express.Router()
 
-const loginLimiter = rateLimit(config.loginLimit)
+const coordinateController = require('../controllers/coordinate.controller')
 
-router.get('/coordinates', async (req, res) => {
-    try {
-        log.Info(`[AUTH ROUTER] - Requested route "/"`)
-        return res.render('case')
-    } catch {
-        log.Fatal(`[AUTH ROUTER] - Somehing went wrong getting dashboard`)
-    }
-    return res.status(200).json({ error: 'La Dashboard non è disponibile!'})
-}) 
+router.post('/get-coordinates',  coordinateController.getCoordinates)
+router.post('/get-coordinate-by-id',  coordinateController.getCoordinateById)
+router.post('/get-coordinate-by-case-id',  coordinateController.getCoordinateByCaseId)
+router.post('/create-coordinate',  coordinateController.createCoordinate)
 
-router.get('/', async (req, res) => {
-    try {
-        log.Info(`[AUTH ROUTER] - Requested route "/"`)
-        return res.render('index')
-    } catch {
-        log.Fatal(`[AUTH ROUTER] - Somehing went wrong getting dashboard`)
-    }
-    return res.status(200).json({ error: 'La Dashboard non è disponibile!'})
-}) 
+
+
 
 module.exports = router

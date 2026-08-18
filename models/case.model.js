@@ -12,6 +12,11 @@ const Case = sequelize.define('case', {
     title: DataTypes.STRING,
     reference: DataTypes.STRING,
     analyst: DataTypes.STRING,
+    url: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        unique: true,
+    }
 }, { charset: 'utf8', collate: 'utf8_general_ci'})
 
 async function syncCaseTable() {

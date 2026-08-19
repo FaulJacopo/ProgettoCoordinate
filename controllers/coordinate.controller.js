@@ -3,10 +3,10 @@ const coordinateService = require('../services/coordinate.service')
 
 exports.createCoordinate = async (req, res) => {
     try {
-        const { text_id, lat, lng, case_id, cell_id } = req.body
+        const { text_id, lat, lng, case_id, cell_id, power, MCC, MNC } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service`)
 
-        const coordinates = await coordinateService.createCoordinate(text_id, lat, lng, case_id, cell_id)
+        const coordinates = await coordinateService.createCoordinate(text_id, lat, lng, case_id, cell_id, power, MCC, MNC)
         if (coordinates === false || coordinates === undefined) {
             return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
         }
@@ -102,10 +102,10 @@ exports.getUniqueCellIdsByCaseId = async (req, res) => {
 
 exports.updateCoordinate = async (req, res) => {
     try {
-        const { id, text_id, lat, lng } = req.body
+        const { id, text_id, lat, lng, power } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to update coordinate - Passing through the Coordinate Service`)
 
-        const coordinate = await coordinateService.updateCoordinate(id, text_id, lat, lng)
+        const coordinate = await coordinateService.updateCoordinate(id, text_id, lat, lng, power)
         if (coordinate === false || coordinate === undefined) {
             return res.status(404).json({ error: 'Coordinata non trovata o non aggiornata.' })
         }
@@ -146,13 +146,17 @@ exports.saveCoordinate = async (req, res) => {
             return res.status(400).json({ error: 'Nessuna coordinata da salvare.' })
         }
 
-        for (const coord of coordinate_list) {
+        for (const coord of coordinate_list.filter(coord => coord.id === -1)) {
             const cell_id = Number(coord.cell_id)
             if (!Number.isInteger(cell_id)) {
                 return res.status(400).json({ error: 'Il Cell ID deve essere un numero intero.' })
             }
 
-            created_coordinates.push({ latitude: coord.latitude, longitude: coord.longitude, text_identifier: coord.text_identifier || "unknown", cell_id, case_id: req.session.case.id })
+            created_coordinates.push({ latitude: coord.latitude, longitude: coord.longitude, text_identifier: coord.text_identifier || "unknown", cell_id, case_id: req.session.case.id, power: coord.power || null, MCC: coord.MCC || null, MNC: coord.MNC || null })
+        }
+
+        if (created_coordinates.length === 0) {
+            return res.json({ coordinates: JSON.stringify([]) })
         }
 
         const result = await coordinateService.createMultipleCoordinates(created_coordinates)
@@ -161,7 +165,8 @@ exports.saveCoordinate = async (req, res) => {
             return res.status(500).json({ error: 'Errore durante la creazione delle coordinate.' })
         }
 
-        return res.json({ coordinates: JSON.stringify(created_coordinates) })
+        const saved_coordinates = result.map(coordinate => coordinate.get({ plain: true }))
+        return res.json({ coordinates: JSON.stringify(saved_coordinates) })
 
     } catch (error) {
         log.Error(`[COORDINATE CONTROLLER] - Error while creating the coordinate: ${error}`)

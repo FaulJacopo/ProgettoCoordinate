@@ -2,6 +2,8 @@
 let coordinates = [];
 let coordinate_view = $('#coordinate-list')
 let coordinate_markers = [];
+let is_saving_coordinates = false;
+let area_filtered_coordinates = null;
 const selected_cell_ids = new Set();
 const button = document.getElementById('import-excel');
 const fileInput = document.getElementById('excel-file');
@@ -43,7 +45,10 @@ fileInput?.addEventListener('change', async () => {
             return;
         }
 
-        coordinates = JSON.parse(result.coordinates);
+        if (coordinates.length != 0) {
+            coordinates = coordinates.concat(JSON.parse(result.coordinates))
+        } else
+            coordinates = JSON.parse(result.coordinates);
         refreshCoordinates();
 
     } catch (error) {
@@ -58,9 +63,12 @@ function addCoordinate(form) {
     const lng = form.longitude.value;
     const text_identifier = form.description.value;
     const cell_id = Number(form.cell_id.value);
+    const power = Number(form.power.value);
+    const MCC = form.MCC.value || null;
+    const MNC = form.MNC.value || null;
 
     if (lat && lng && Number.isInteger(cell_id)) {
-        const coordinate = { latitude: parseFloat(lat), longitude: parseFloat(lng), text_identifier: text_identifier, cell_id };
+        const coordinate = { id: -1, latitude: parseFloat(lat), longitude: parseFloat(lng), text_identifier: text_identifier, cell_id, power, MCC, MNC };
         coordinates.push(coordinate);
         updateMap(coordinates.length - 1);
         updateViewCoordinate();
@@ -75,24 +83,29 @@ function updateMap(coordinate_index) {
     const latitude = getCoordinateValue(coordinate, 'lat', 'latitude');
     const longitude = getCoordinateValue(coordinate, 'lng', 'longitude');
     const marker_color = cellIdToColor(coordinate.cell_id);
+    const marker_size = (coordinate.power < -120) ? 16 : (coordinate.power < -105) ? 26 : 35;
+
     const marker_icon = L.divIcon({
         className: 'cell-marker-icon',
-        html: `<span class="cell-marker" style="--marker-color: ${marker_color}"></span>`,
-        iconSize: [28, 28],
-        iconAnchor: [14, 28],
-        popupAnchor: [0, -28]
+        html: `<span class="cell-marker" style="--marker-color: ${marker_color}; --marker-size: ${marker_size}px;"></span>`,
+        iconSize: [marker_size, marker_size],
+        iconAnchor: [marker_size / 2, marker_size / 2],
+        popupAnchor: [0, -marker_size / 2]
     });
+
     const popupContent = `
         <div style="min-width: 180px;">
-        <strong>${coordinate.text_identifier}</strong><br>
-        Latitude: ${latitude ?? '-'}<br>
-        Longitude: ${longitude ?? '-'}<br>
-        Cell ID: ${coordinate.cell_id ?? '-'}
-        </div>
-    `;
+            <strong>${coordinate.text_identifier}</strong><br>
+            Latitude: ${latitude ?? '-'}<br>
+            Longitude: ${longitude ?? '-'}<br>
+            Cell ID: ${coordinate.cell_id ?? '-'}<br>
+            Power: ${coordinate.power ?? '-'}<br>
+            MCC: ${coordinate.MCC ?? '-'}<br>
+            MNC: ${coordinate.MNC ?? '-'}
+        </div>`;
 
     const marker = L.marker([latitude, longitude], { icon: marker_icon }).bindPopup(popupContent);
-    coordinate_markers.push({ marker, cell_id: String(coordinate.cell_id) });
+    coordinate_markers.push({ marker, cell_id: String(coordinate.cell_id), coordinate });
     marker.addTo(map);
 }
 
@@ -156,8 +169,10 @@ function toggleCellFilter(cell_id) {
 }
 
 function applyCellFilters() {
-    coordinate_markers.forEach(({ marker, cell_id }) => {
-        const should_be_visible = selected_cell_ids.size === 0 || selected_cell_ids.has(cell_id);
+    coordinate_markers.forEach(({ marker, cell_id, coordinate }) => {
+        const matches_cell_filter = selected_cell_ids.size === 0 || selected_cell_ids.has(cell_id);
+        const matches_area_filter = area_filtered_coordinates === null || area_filtered_coordinates.has(coordinate);
+        const should_be_visible = matches_cell_filter && matches_area_filter;
         const is_visible = map.hasLayer(marker);
 
         if (should_be_visible && !is_visible) {
@@ -257,7 +272,7 @@ function updateViewCoordinate() {
         });
 
         const coordinate_data = $('<dl>', {
-            class: 'mt-2 grid grid-cols-2 gap-x-4 gap-y-1'
+            class: 'mt-2 grid grid-cols-3 gap-x-4 gap-y-1'
         });
 
         const latitude_group = $('<div>', { class: 'min-w-0' }).append(
@@ -276,7 +291,7 @@ function updateViewCoordinate() {
             })
         );
 
-        const cell_id_group = $('<div>', { class: 'col-span-2 min-w-0' }).append(
+        const cell_id_group = $('<div>', { class: 'min-w-0' }).append(
             $('<dt>', { class: 'text-xs font-medium text-slate-400', text: 'Cell ID' }),
             $('<dd>', {
                 class: 'mt-0.5 truncate font-mono text-xs font-medium text-slate-600',
@@ -284,18 +299,92 @@ function updateViewCoordinate() {
             })
         );
 
-        coordinate_data.append(latitude_group, longitude_group, cell_id_group);
+        const power_group = $('<div>', { class: 'min-w-0' }).append(
+            $('<dt>', { class: 'text-xs font-medium text-slate-400', text: 'Power' }),
+            $('<dd>', {
+                class: 'mt-0.5 truncate font-mono text-xs font-medium text-slate-600',
+                text: element.power ?? '-'
+            })
+        );
+
+        const MCC_group = $('<div>', { class: 'min-w-0' }).append(
+            $('<dt>', { class: 'text-xs font-medium text-slate-400', text: 'MCC' }),
+            $('<dd>', {
+                class: 'mt-0.5 truncate font-mono text-xs font-medium text-slate-600',
+                text: element.MCC ?? '-'
+            })
+        );
+
+        const MNC_group = $('<div>', { class: 'min-w-0' }).append(
+            $('<dt>', { class: 'text-xs font-medium text-slate-400', text: 'MNC' }),
+            $('<dd>', {
+                class: 'mt-0.5 truncate font-mono text-xs font-medium text-slate-600',
+                text: element.MNC ?? '-'
+            })
+        );
+
+        coordinate_data.append(latitude_group, longitude_group, cell_id_group, power_group, MCC_group, MNC_group);
         content.append(title, coordinate_data);
         list_item.append(number, content);
         coordinate_view.append(list_item);
     });
 }
 
-function saveCaseCoordinates() {
-    let times = Math.ceil(coordinates.length / 1000)
+function filterCoordinatesByLatLong(areaCoordinates) {
+    if (!Array.isArray(areaCoordinates) || areaCoordinates.length < 3) {
+        return [];
+    }
+
+    const polygon = areaCoordinates
+        .map(coordinate => ({ latitude: Number(coordinate.latitude), longitude: Number(coordinate.longitude) }))
+        .filter(coordinate => Number.isFinite(coordinate.latitude) && Number.isFinite(coordinate.longitude));
+
+    if (polygon.length < 3) {
+        return [];
+    }
+
+    function isPointInsidePolygon(latitude, longitude) {
+        let inside = false;
+
+        for ( let current = 0, previous = polygon.length - 1; current < polygon.length; previous = current++ ) {
+            const currentLatitude = polygon[current].latitude;
+            const currentLongitude = polygon[current].longitude;
+            const previousLatitude = polygon[previous].latitude;
+            const previousLongitude = polygon[previous].longitude;
+
+            const intersects = (currentLatitude > latitude) !== (previousLatitude > latitude) && longitude < ((previousLongitude - currentLongitude) * (latitude - currentLatitude)) / (previousLatitude - currentLatitude) + currentLongitude;
+
+            if (intersects) {
+                inside = !inside;
+            }
+        }
+
+        return inside;
+    }
+
+    return coordinates.filter(coordinate => {
+        const latitude = Number(coordinate.latitude ?? coordinate.lat);
+        const longitude = Number(coordinate.longitude ?? coordinate.lng);
+
+        return (Number.isFinite(latitude) && Number.isFinite(longitude) && isPointInsidePolygon(latitude, longitude));
+    });
+}
+
+function showFilteredCells(filtered_coordinates) {
+    area_filtered_coordinates = Array.isArray(filtered_coordinates)
+        ? new Set(filtered_coordinates)
+        : null;
+
+    applyCellFilters();
+}
+
+async function saveCaseCoordinates() {
+    let temp_coordinates = coordinates.filter(el => el.id == -1)
+    let payload_range = 250
+    let times = Math.ceil(temp_coordinates.length / payload_range)
 
     for (let i = 0; i < times; i++) {
-        $.post('/coordinates/save-coordinate', { coordinates: JSON.stringify(coordinates.slice(i * 1000, (i + 1) * 1000)) }, async function(res) {
+        $.post('/coordinates/save-coordinate', { coordinates: JSON.stringify(temp_coordinates.slice(i * payload_range, (i + 1) * payload_range)) }, async function(res) {
             if (res.error) {
                 showErrorNotification(res.error)
                 window.location.href = res.redirect

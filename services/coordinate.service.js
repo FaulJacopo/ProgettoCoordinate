@@ -1,11 +1,11 @@
 const log = require('../utility/logger')
 const { Coordinate } = require('../models/coordinate.model')
 
-exports.createCoordinate = async (text_id, lat, lng, case_id, cell_id) => {
+exports.createCoordinate = async (text_id, lat, lng, case_id, cell_id, power, MCC, MNC) => {
     try {
         log.Info(`[COORDINATE SERVICE] - Requested method to create coordinates`)
 
-        ;(await Coordinate.create({ text_identifier: text_id, latitude: lat, longitude: lng, case_id, cell_id })).save()
+        ;(await Coordinate.create({ text_identifier: text_id, latitude: lat, longitude: lng, case_id, cell_id, power, MCC, MNC })).save()
         return this.getCoordinates()
 
     } catch (error) {
@@ -22,7 +22,7 @@ exports.getCoordinates = async () => {
         let coordinates_array = []
 
         coordinates.forEach(element => {
-            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id })
+            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id, power: element.power, MCC: element.MCC, MNC: element.MNC })
         })
 
         return coordinates_array
@@ -42,7 +42,7 @@ exports.getCoordinateById = async (coordinates_id) => {
             return false
         }
 
-        let sel_coordinate_json = { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id }
+        let sel_coordinate_json = { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id, power: sel_coordinate.power, MCC: sel_coordinate.MCC, MNC: sel_coordinate.MNC }
 
         return sel_coordinate_json
 
@@ -60,7 +60,7 @@ exports.getCoordinateByCaseId = async (case_id) => {
         let coordinates_array = []
 
         coordinates.forEach(element => {
-            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id })
+            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id, power: element.power, MCC: element.MCC, MNC: element.MNC })
         })
 
         return coordinates_array
@@ -83,7 +83,7 @@ exports.getUniqueCellIdsByCaseId = async (case_id) => {
     }
 }
 
-exports.updateCoordinate = async (coordinates_id, text_id, lat, lng) => {
+exports.updateCoordinate = async (coordinates_id, text_id, lat, lng, power) => {
     try {
         log.Info(`[COORDINATE SERVICE] - Requested method to update coordinates`)
 
@@ -96,9 +96,10 @@ exports.updateCoordinate = async (coordinates_id, text_id, lat, lng) => {
         sel_coordinate.text_identifier = text_id
         sel_coordinate.latitude = lat
         sel_coordinate.longitude = lng
+        sel_coordinate.power = power
 
         await sel_coordinate.save()
-        return { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id }
+        return { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id, power: sel_coordinate.power, MCC: sel_coordinate.MCC, MNC: sel_coordinate.MNC }
 
     } catch (error) {
         log.Error(`[COORDINATE SERVICE] - Something went wrong updating coordinate: ${error}`)
@@ -123,8 +124,11 @@ exports.createMultipleCoordinates = async (coordinates) => {
     try {
         log.Info(`[COORDINATE SERVICE] - Requested method to create Multiple Coordinates`)
 
-        let inserted_coordinates = await Coordinate.bulkCreate(coordinates)
-        return inserted_coordinates
+        if (!Array.isArray(coordinates) || coordinates.length === 0) {
+            return []
+        }
+
+        return Coordinate.bulkCreate(coordinates)
     } catch (error) {
         log.Error(`[COORDINATE SERVICE] - Something went wrong saving multiple coordinates: ${error}`)
         return false

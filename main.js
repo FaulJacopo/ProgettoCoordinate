@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express')
+const path = require('path')
 const hbs = require('hbs')
 const log = require('./utility/logger')
 const session = require('express-session')
@@ -19,6 +20,7 @@ const routerAuth = require('./routes/auth.routes')
 const app = express()
 
 app.use(express.static('public'))
+app.use('/vendor/leaflet-area-selection', express.static(path.join(__dirname, 'node_modules/@bopen/leaflet-area-selection/dist')))
 app.use(cookieParser())
 
 //app.use(csrfProtection)

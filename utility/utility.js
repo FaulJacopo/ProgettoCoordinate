@@ -219,3 +219,37 @@ exports.returnNoteData = function (notes) {
 
     return note_array;
 }
+
+exports.parseExcelNumber = (value) => {
+    if (typeof value === 'number') {
+        return Number.isFinite(value) ? value : NaN
+    }
+
+    if (typeof value !== 'string') {
+        return NaN
+    }
+
+    let normalized = value.trim().replace(/[\s\u00a0']/g, '')
+    if (normalized === '') {
+        return NaN
+    }
+
+    const lastComma = normalized.lastIndexOf(',')
+    const lastDot = normalized.lastIndexOf('.')
+
+    if (lastComma !== -1 && lastDot !== -1) {
+        const decimalSeparator = lastComma > lastDot ? ',' : '.'
+        const thousandsSeparator = decimalSeparator === ',' ? '.' : ','
+        normalized = normalized.split(thousandsSeparator).join('')
+
+        if (decimalSeparator === ',') {
+            normalized = normalized.replace(',', '.')
+        }
+    } else if (lastComma !== -1) {
+        const parts = normalized.split(',')
+        const decimalPart = parts.pop()
+        normalized = `${parts.join('')}.${decimalPart}`
+    }
+
+    return Number(normalized)
+}

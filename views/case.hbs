@@ -33,6 +33,31 @@
                     <div><h2 id="map-heading" class="text-lg font-semibold text-slate-950">Mappa delle coordinate</h2><p class="mt-1 text-sm text-slate-500">Visualizza i punti aggiunti al caso.</p></div>
                     <span class="hidden rounded-md bg-slate-100 px-2.5 py-1.5 text-xs font-medium text-slate-600 sm:inline-flex">OpenStreetMap</span>
                 </div>
+                <div class="mb-3 flex min-h-12 items-center justify-between gap-3 overflow-x-auto rounded-lg border border-slate-200 bg-white px-2 py-1.5 shadow-sm" role="toolbar" aria-label="Strumenti della mappa">
+                    <div class="flex shrink-0 items-center gap-1">
+                        <button type="button" id="area-selection-toggle" class="flex h-8 w-8 items-center justify-center rounded-md bg-slate-900 text-white" aria-label="Seleziona area" aria-pressed="false" title="Seleziona area">
+                            <i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Sposta mappa" title="Sposta mappa">
+                            <i class="fa-solid fa-hand" aria-hidden="true"></i>
+                        </button>
+                        <span class="mx-1 h-6 w-px bg-slate-200" aria-hidden="true"></span>
+                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Misura distanza" title="Misura distanza">
+                            <i class="fa-solid fa-ruler" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Centra posizione" title="Centra posizione">
+                            <i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="flex shrink-0 items-center gap-1">
+                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Livelli mappa" title="Livelli mappa">
+                            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Adatta alla vista" title="Adatta alla vista">
+                            <i class="fa-solid fa-expand" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-2 shadow-sm">
                     <div id="map" class="w-full rounded-lg" style="height: min(70vh, 560px); min-height: 360px;"></div>
                     <div class="pointer-events-none absolute bottom-5 left-5 rounded-lg border border-white/80 bg-white/95 px-3 py-2 text-xs text-slate-600 shadow-sm backdrop-blur-sm"><span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-red-600"></span>Coordinate del caso</div>
@@ -53,9 +78,16 @@
                     <p class="mt-1 text-sm leading-5 text-slate-500">Inserisci latitudine e longitudine per posizionare un nuovo punto.</p>
                     <form id="coordinate-form" class="mt-6 space-y-4" onsubmit="event.preventDefault(); addCoordinate(this)">
                         <div><label for="description" class="mb-1.5 block text-sm font-medium text-slate-700">Descrizione</label><input type="text" id="description" name="description" placeholder="N. 1 - Lugano Centro" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
-                        <div><label for="cell_id" class="mb-1.5 block text-sm font-medium text-slate-700">Cell ID</label><input type="number" id="cell_id" name="cell_id" min="0" step="1" required placeholder="29728090" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div><label for="cell_id" class="mb-1.5 block text-sm font-medium text-slate-700">Cell ID</label><input type="number" id="cell_id" name="cell_id" min="0" step="1" required placeholder="29728090" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                            <div><label for="power" class="mb-1.5 block text-sm font-medium text-slate-700">Potenza</label><input type="number" id="power" name="power" step="1" required placeholder="-110" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                        </div>
                         <div><label for="latitude" class="mb-1.5 block text-sm font-medium text-slate-700">Latitudine</label><input type="number" id="latitude" name="latitude" step="0.000001" placeholder="45.935000" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
                         <div><label for="longitude" class="mb-1.5 block text-sm font-medium text-slate-700">Longitudine</label><input type="number" id="longitude" name="longitude" step="0.000001" placeholder="8.997000" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div><label for="MCC" class="mb-1.5 block text-sm font-medium text-slate-700">MCC</label><input type="number" id="MCC" name="MCC" min="0" step="1" placeholder="297" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                            <div><label for="MNC" class="mb-1.5 block text-sm font-medium text-slate-700">MNC</label><input type="number" id="MNC" name="MNC" min="0" step="1" placeholder="297" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
+                        </div>
                         <div class="grid grid-cols-2 gap-2">
                             <button type="submit" class="inline-flex h-10 w-full items-center justify-center rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">Aggiungi punto <span class="ml-2" aria-hidden="true">-&gt;</span></button>
                             <button type="button" id="import-excel" class="inline-flex h-10 w-full items-center justify-center rounded-lg bg-purple-900 px-4 text-sm font-semibold text-white transition hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Importa Excel</button>
@@ -80,14 +112,70 @@
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="/vendor/leaflet-area-selection/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-tilelayer-swiss@2.4.0/dist/Leaflet.TileLayer.Swiss.umd.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script>
         const map = L.map('map').setView([45.998, 8.75], 9);
-
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+
+        let selectedAreaCoordinates = [];
+        const areaSelection = new leafletAreaSelection.DrawAreaSelection({
+            onPolygonReady: (polygon) => {
+                const polygonLatLngs = polygon.getLatLngs();
+                const vertices = Array.isArray(polygonLatLngs[0])
+                    ? polygonLatLngs.flat()
+                    : polygonLatLngs;
+
+                selectedAreaCoordinates = vertices.map(({ lat, lng }) => ({
+                    latitude: lat,
+                    longitude: lng
+                }));
+
+                console.log('Coordinate area selezionata:', selectedAreaCoordinates);
+                showFilteredCells(filterCoordinatesByLatLong(selectedAreaCoordinates));
+            }
+        });
+        map.addControl(areaSelection);
+        areaSelection.getContainer().style.display = 'none';
+
+        const areaSelectionHelp = document.getElementById('draw-panel-help');
+        if (areaSelectionHelp) {
+            areaSelectionHelp.textContent = 'Disegna un poligono facendo clic sulla mappa oppure trascina per creare un rettangolo.';
+        }
+
+        const areaSelectionToggle = document.getElementById('area-selection-toggle');
+        let mapDraggingWasEnabled = map.dragging.enabled();
+
+        areaSelectionToggle?.addEventListener('click', () => {
+            if (areaSelection.phase === 'draw' || areaSelection.phase === 'adjust') {
+                areaSelection.deactivate();
+                if (mapDraggingWasEnabled) map.dragging.enable();
+                showFilteredCells(null);
+                areaSelectionToggle.classList.remove('bg-red-600');
+                areaSelectionToggle.classList.add('bg-slate-900');
+                areaSelectionToggle.setAttribute('aria-pressed', 'false');
+            } else {
+                mapDraggingWasEnabled = map.dragging.enabled();
+                areaSelection.activate();
+                areaSelectionToggle.classList.remove('bg-slate-900');
+                areaSelectionToggle.classList.add('bg-red-600');
+                areaSelectionToggle.setAttribute('aria-pressed', 'true');
+            }
+        });
+
+        
+        /* var swissLayer = L.tileLayer.swiss({
+            layer: 'ch.swisstopo.swissimage',
+            maxNativeZoom: 14
+        });
+        swissLayer.addTo(map)
+        */
+
+        
     </script>
 
 {{>footer}}

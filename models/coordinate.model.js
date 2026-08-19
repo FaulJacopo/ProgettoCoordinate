@@ -13,6 +13,9 @@ const Coordinate = sequelize.define('coordinate', {
     latitude: DataTypes.STRING,
     longitude: DataTypes.STRING,
     case_id: DataTypes.INTEGER,
+    power: DataTypes.INTEGER,
+    MCC: DataTypes.INTEGER,
+    MNC: DataTypes.INTEGER,
     cell_id: {
         type: DataTypes.INTEGER,
         allowNull: false,

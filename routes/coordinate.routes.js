@@ -55,15 +55,28 @@ router.post('/import', upload.single('excel'), async (req, res) => {
         const coordinates = [];
 
         for (const row of rows) {
-            const latitude = Number(row.N);
-            const longitude = Number(row.E);
-            const cell_id = Number(row.CellID ?? row.cell_id ?? row['Cell ID'] ?? row.CELL_ID);
+            const text_identifier = row.Source ?? row.source ?? row.SOURCE
+            const latitude = utility.parseExcelNumber(row.N ?? row.latitude ?? row.Latitude ?? row.LATITUDE ?? row.LAT ?? row.lat ?? row.Lat)
+            const longitude = utility.parseExcelNumber(row.E ?? row.longitude ?? row.Longitude ?? row.LONGITUDE ?? row.LNG ?? row.lng ?? row.long ?? row.Long)
+            const cell_id = utility.parseExcelNumber(row.CellID ?? row.cell_id ?? row['Cell ID'] ?? row.CELL_ID)
+            const power = utility.parseExcelNumber(row.Adress ?? row.adress ?? row.Potenza ?? row.potenza ?? row.Power ?? row.power)
+            const MCC = utility.parseExcelNumber(row.MCC)
+            const MNC = utility.parseExcelNumber(row.MNC)
 
             if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || !Number.isInteger(cell_id)) {
                 continue;
             }
 
-            coordinates.push({ latitude, longitude, cell_id });
+            coordinates.push({
+                id: -1,
+                text_identifier,
+                latitude,
+                longitude,
+                cell_id,
+                power: Number.isFinite(power) ? power : null,
+                MCC: Number.isFinite(MCC) ? MCC : null,
+                MNC: Number.isFinite(MNC) ? MNC : null
+            });
         }
 
         if (coordinates.length === 0) {

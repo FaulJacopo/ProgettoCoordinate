@@ -11,7 +11,7 @@ exports.createCase = async (req, res) => {
             return res.status(500).json({ error: 'Errore durante la creazione del caso.' })
         }
 
-        return res.json({ cases: JSON.stringify(cases) })
+        return res.json({ case: JSON.stringify(cases) })
     } catch (error) {
         log.Error(`[CASE CONTROLLER] - Error while creating the case: ${error}`)
         return res.status(500).json({ error: 'Errore durante la creazione del caso.' })

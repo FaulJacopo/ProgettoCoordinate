@@ -1,5 +1,9 @@
+const fs = require('fs')
+const utility = require('../utility/utility')
 const log = require('../utility/logger')
 const coordinateService = require('../services/coordinate.service')
+
+let temp_file_content = ``
 
 exports.createCoordinate = async (req, res) => {
     try {
@@ -171,5 +175,73 @@ exports.saveCoordinate = async (req, res) => {
     } catch (error) {
         log.Error(`[COORDINATE CONTROLLER] - Error while creating the coordinate: ${error}`)
         return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
+    }
+}
+
+exports.exportFileKML = async (req, res) => {
+    try {
+        const { coordinates_to_export, status } = req.body
+
+        const current_status = JSON.parse(status)
+        const coordinate_list = Array.isArray(coordinates_to_export)
+            ? coordinates_to_export
+            : JSON.parse(coordinates_to_export)
+
+        if (temp_file_content.length == 0)
+            temp_file_content = utility.resetFileContent()
+
+        if (coordinate_list.length === 0) {
+            return res.status(400).json({ error: 'Nessuna coordinata da esportare.' })
+        }
+
+        coordinate_list.forEach(coordinate => {
+            temp_file_content += `
+<Placemark>
+    <Style>
+        <IconStyle>
+            <color>${utility.changeToKMLColor(coordinate.color)}</color>
+            <scale>1.8</scale>
+            <Icon>
+                <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+            </Icon>
+        </IconStyle>
+    </Style>
+    <name></name>
+    <description>CellID: ${coordinate.cell_id} / MCC: ${coordinate.MCC} / MNC: ${coordinate.MNC} / Power: ${coordinate.power}</description>
+    <TimeStamp><when>2026-08-11T17:24:00Z</when></TimeStamp>
+    <Point><coordinates>${coordinate.longitude},${coordinate.latitude}</coordinates></Point>
+</Placemark>`
+        });
+
+        if (status == false) {
+            return res.status(200).json({ message: `File Aggiornato` })
+        }
+
+        if (status == true) {
+            temp_file_content += `</Folder></Document></kml>`
+    
+            const filename = `${req.session.case.title.replace(' ', '-')}${new Date().toISOString().replace(/[:.]/g, '-')}.kml`;
+    
+            res.setHeader('Content-Type', 'application/vnd.google-earth.kml+xml; charset=utf-8');
+            res.setHeader('Content-Disposition', `attachment; filename="${filename}"` );
+    
+            // fs.appendFile(`/exported-data/${new Date().toISOString()}.kml`, content, err => {
+            //     if (err) {
+            //         log.Error(`[COORDINATE CONTROLLER] - Error Creating file`)
+            //     } else {
+            //         // done!
+            //         return res.status(200).send()
+            //     }
+            // });
+            let content = temp_file_content
+            temp_file_content = utility.resetFileContent()
+    
+            return res.status(200).send(content);
+        }
+
+
+    } catch (error) {
+        log.Error(`[COORDINATE CONTROLLER] - Error while exporting file KML: ${error}`)
+        return res.status(500).json({ error: `Errore durante l'esportazione del file KML.` })
     }
 }

@@ -253,3 +253,31 @@ exports.parseExcelNumber = (value) => {
 
     return Number(normalized)
 }
+
+exports.changeToKMLColor = (hex_color) => {
+    hex = hex_color.replace('#', '');
+
+    const r = hex.substring(0, 2);
+    const g = hex.substring(2, 4);
+    const b = hex.substring(4, 6);
+
+    return `ff${b}${g}${r}`;
+}
+
+exports.resetFileContent = () => {
+    return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+<Style id="globalCustomColor">
+    <IconStyle>
+    <color>ff0000ff</color> <!-- Change to your preferred AABBGGRR color -->
+    </IconStyle>
+    <LineStyle>
+    <color>ff0000ff</color> <!-- Changes lines if your placemarks have paths -->
+    </LineStyle>
+    <PolyStyle>
+    <color>ff0000ff</color> <!-- Changes fills if your placemarks are shapes -->
+    </PolyStyle>
+</Style>
+<Folder><name>Cells</name>`
+}

@@ -1,19 +1,65 @@
-
 let coordinates = [];
 let coordinate_view = $('#coordinate-list')
 let coordinate_markers = [];
 let is_saving_coordinates = false;
 let area_filtered_coordinates = null;
+let filtered_coordinates = [];
+let power_filter_min = null;
+let power_filter_max = null;
+let power_available_min = null;
+let power_available_max = null;
+
 const selected_cell_ids = new Set();
+const selected_operator_codes = new Set(['01', '02', '03', 'XX']);
 const button = document.getElementById('import-excel');
 const fileInput = document.getElementById('excel-file');
 const cellFilterPanel = document.getElementById('cell-filter-panel');
 const cellFilterList = document.getElementById('cell-filter-list');
 const clearCellFiltersButton = document.getElementById('clear-cell-filters');
+const dataFilterPanel = document.getElementById('data-filter-panel');
+const powerFilterMin = document.getElementById('power-filter-min');
+const powerFilterMax = document.getElementById('power-filter-max');
+const powerFilterValue = document.getElementById('power-filter-value');
+const operatorFilterList = document.getElementById('operator-filter-list');
+const resetDataFiltersButton = document.getElementById('reset-data-filters');
 
 clearCellFiltersButton?.addEventListener('click', () => {
     selected_cell_ids.clear();
     renderCellFilters();
+    applyCellFilters();
+});
+
+powerFilterMin?.addEventListener('input', () => {
+    power_filter_min = Math.min(Number(powerFilterMin.value), Number(powerFilterMax.value));
+    powerFilterMin.value = power_filter_min;
+    updatePowerFilterValue();
+    applyCellFilters();
+});
+
+powerFilterMax?.addEventListener('input', () => {
+    power_filter_max = Math.max(Number(powerFilterMax.value), Number(powerFilterMin.value));
+    powerFilterMax.value = power_filter_max;
+    updatePowerFilterValue();
+    applyCellFilters();
+});
+
+operatorFilterList?.addEventListener('change', event => {
+    if (!event.target.matches('input[type="checkbox"]')) return;
+
+    selected_operator_codes.clear();
+    operatorFilterList.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
+        selected_operator_codes.add(input.value);
+    });
+    applyCellFilters();
+});
+
+resetDataFiltersButton?.addEventListener('click', () => {
+    power_filter_min = null;
+    power_filter_max = null;
+    selected_operator_codes.clear();
+    ['01', '02', '03', 'XX'].forEach(code => selected_operator_codes.add(code));
+    operatorFilterList.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = true; });
+    renderDataFilters();
     applyCellFilters();
 });
 
@@ -73,6 +119,7 @@ function addCoordinate(form) {
         updateMap(coordinates.length - 1);
         updateViewCoordinate();
         renderCellFilters();
+        renderDataFilters();
         applyCellFilters();
         form.reset();
     }
@@ -84,6 +131,8 @@ function updateMap(coordinate_index) {
     const longitude = getCoordinateValue(coordinate, 'lng', 'longitude');
     const marker_color = cellIdToColor(coordinate.cell_id);
     const marker_size = (coordinate.power < -120) ? 16 : (coordinate.power < -105) ? 26 : 35;
+
+    coordinate.color = marker_color
 
     const marker_icon = L.divIcon({
         className: 'cell-marker-icon',
@@ -116,7 +165,80 @@ function refreshCoordinates() {
     coordinates.forEach((_, index) => updateMap(index));
     updateViewCoordinate();
     renderCellFilters();
+    renderDataFilters();
     applyCellFilters();
+}
+
+function getPowerBounds() {
+    const power_values = coordinates
+        .map(coordinate => coordinate.power)
+        .filter(value => value !== null && value !== undefined && value !== '')
+        .map(Number)
+        .filter(Number.isFinite);
+
+    if (power_values.length === 0) return null;
+
+    let minimum = Math.floor(Math.min(...power_values));
+    let maximum = Math.ceil(Math.max(...power_values));
+    if (minimum === maximum) {
+        minimum -= 1;
+        maximum += 1;
+    }
+    return { minimum, maximum };
+}
+
+function updatePowerFilterValue() {
+    if (!powerFilterValue) return;
+    powerFilterValue.textContent = power_filter_min === null || power_filter_max === null
+        ? '-'
+        : `${power_filter_min} - ${power_filter_max} dBm`;
+}
+
+function renderDataFilters() {
+    const bounds = getPowerBounds();
+    dataFilterPanel?.classList.toggle('hidden', coordinates.length === 0);
+
+    if (!bounds || !powerFilterMin || !powerFilterMax) {
+        power_filter_min = null;
+        power_filter_max = null;
+        power_available_min = null;
+        power_available_max = null;
+        powerFilterMin?.setAttribute('disabled', '');
+        powerFilterMax?.setAttribute('disabled', '');
+        updatePowerFilterValue();
+        return;
+    }
+
+    powerFilterMin.removeAttribute('disabled');
+    powerFilterMax.removeAttribute('disabled');
+    powerFilterMin.min = bounds.minimum;
+    powerFilterMin.max = bounds.maximum;
+    powerFilterMax.min = bounds.minimum;
+    powerFilterMax.max = bounds.maximum;
+
+    const was_full_range = power_filter_min === null || power_filter_max === null || (
+        power_filter_min === power_available_min && power_filter_max === power_available_max
+    );
+    power_available_min = bounds.minimum;
+    power_available_max = bounds.maximum;
+
+    power_filter_min = was_full_range
+        ? bounds.minimum
+        : Math.max(bounds.minimum, Math.min(power_filter_min, bounds.maximum));
+    power_filter_max = was_full_range
+        ? bounds.maximum
+        : Math.max(power_filter_min, Math.min(power_filter_max, bounds.maximum));
+    powerFilterMin.value = power_filter_min;
+    powerFilterMax.value = power_filter_max;
+    updatePowerFilterValue();
+}
+
+function getOperatorCode(mnc) {
+    const numeric_mnc = Number(mnc);
+    if (numeric_mnc === 1) return '01';
+    if (numeric_mnc === 2) return '02';
+    if (numeric_mnc === 3) return '03';
+    return 'XX';
 }
 
 function getUniqueCellIds() {
@@ -169,11 +291,26 @@ function toggleCellFilter(cell_id) {
 }
 
 function applyCellFilters() {
+    filtered_coordinates = [];
+
     coordinate_markers.forEach(({ marker, cell_id, coordinate }) => {
         const matches_cell_filter = selected_cell_ids.size === 0 || selected_cell_ids.has(cell_id);
         const matches_area_filter = area_filtered_coordinates === null || area_filtered_coordinates.has(coordinate);
-        const should_be_visible = matches_cell_filter && matches_area_filter;
+        const power = Number(coordinate.power);
+        const power_filter_is_active = power_filter_min !== null && power_filter_max !== null && (
+            power_filter_min > power_available_min || power_filter_max < power_available_max
+        );
+        const matches_power_filter = !power_filter_is_active || (
+            coordinate.power !== null && coordinate.power !== undefined && coordinate.power !== '' &&
+            Number.isFinite(power) && power >= power_filter_min && power <= power_filter_max
+        );
+        const matches_operator_filter = selected_operator_codes.has(getOperatorCode(coordinate.MNC ?? coordinate.mnc));
+        const should_be_visible = matches_cell_filter && matches_area_filter && matches_power_filter && matches_operator_filter;
         const is_visible = map.hasLayer(marker);
+
+        if (should_be_visible) {
+            filtered_coordinates.push(coordinate);
+        }
 
         if (should_be_visible && !is_visible) {
             marker.addTo(map);
@@ -392,6 +529,46 @@ async function saveCaseCoordinates() {
                 console.log(`Coordinate salvate con successo!`)
             }
         })
+    }
+}
+
+async function exportFileKML() {
+    try {
+        let payload_limit = 250
+        let times = Math.ceil(filtered_coordinates.length / payload_limit)
+        let response = ""
+
+        for (let i = 0; i < times; i++) {
+            response = await fetch('/coordinates/export-file', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ coordinates_to_export: filtered_coordinates.slice(i * payload_limit, (i + 1) * payload_limit), status: i == (times - 1)})
+            });
+        }
+
+
+        if (!response.ok) {
+            const result = await response.json().catch(() => ({}));
+            throw new Error(result.error || 'Errore durante l\'esportazione del file KML.');
+        }
+
+        const contentDisposition = response.headers.get('Content-Disposition') || '';
+        const filenameMatch = contentDisposition.match(/filename="?([^";]+)"?/i);
+        const filename = filenameMatch?.[1] || 'coordinate.kml';
+        const blob = await response.blob();
+        const downloadUrl = URL.createObjectURL(blob);
+        const downloadLink = document.createElement('a');
+
+        downloadLink.href = downloadUrl;
+        downloadLink.download = filename;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove();
+        URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+        showErrorNotification(error.message || 'Errore durante l\'esportazione del file KML.');
     }
 }
 

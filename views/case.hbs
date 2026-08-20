@@ -38,7 +38,7 @@
                         <button type="button" id="area-selection-toggle" class="flex h-8 w-8 items-center justify-center rounded-md bg-slate-900 text-white" aria-label="Seleziona area" aria-pressed="false" title="Seleziona area">
                             <i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i>
                         </button>
-                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Sposta mappa" title="Sposta mappa">
+                        {{!-- <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Sposta mappa" title="Sposta mappa">
                             <i class="fa-solid fa-hand" aria-hidden="true"></i>
                         </button>
                         <span class="mx-1 h-6 w-px bg-slate-200" aria-hidden="true"></span>
@@ -47,14 +47,11 @@
                         </button>
                         <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Centra posizione" title="Centra posizione">
                             <i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i>
-                        </button>
+                        </button>--}}
                     </div>
                     <div class="flex shrink-0 items-center gap-1">
-                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Livelli mappa" title="Livelli mappa">
-                            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="flex h-8 w-8 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Adatta alla vista" title="Adatta alla vista">
-                            <i class="fa-solid fa-expand" aria-hidden="true"></i>
+                        <button type="button" onclick="exportFileKML()" class="flex h-8 w-32 items-center justify-center rounded-md text-slate-500 transition hover:bg-slate-400 bg-slate-200 hover:text-slate-900" aria-label="Esporta Selezionati" title="Esporta Selezionati">
+                            Esporta KML
                         </button>
                     </div>
                 </div>
@@ -62,7 +59,40 @@
                     <div id="map" class="w-full rounded-lg" style="height: min(70vh, 560px); min-height: 360px;"></div>
                     <div class="pointer-events-none absolute bottom-5 left-5 rounded-lg border border-white/80 bg-white/95 px-3 py-2 text-xs text-slate-600 shadow-sm backdrop-blur-sm"><span class="mr-1.5 inline-block h-2 w-2 rounded-full bg-red-600"></span>Coordinate del caso</div>
                 </div>
-                <div id="cell-filter-panel" class="mt-4 hidden" aria-labelledby="cell-filter-heading">
+                <div id="data-filter-panel" class="mt-4 hidden border-t border-slate-200 pt-4">
+                    <div class="mb-3 flex items-center justify-between gap-4">
+                        <h3 class="text-sm font-semibold text-slate-700">Altri filtri</h3>
+                        <button type="button" id="reset-data-filters" class="text-xs font-semibold text-slate-500 transition hover:text-slate-900">Ripristina</button>
+                    </div>
+                    <div class="grid gap-5 sm:grid-cols-2">
+                        <div class="min-w-0">
+                            <div class="mb-2 flex items-center justify-between gap-3">
+                                <span class="text-xs font-semibold uppercase text-slate-500">Potenza</span>
+                                <output id="power-filter-value" class="font-mono text-xs font-semibold text-slate-700"></output>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="min-w-0 text-xs text-slate-500">
+                                    <span>Da</span>
+                                    <input type="range" id="power-filter-min" step="1" class="mt-2 block w-full accent-red-600">
+                                </label>
+                                <label class="min-w-0 text-xs text-slate-500">
+                                    <span>A</span>
+                                    <input type="range" id="power-filter-max" step="1" class="mt-2 block w-full accent-red-600">
+                                </label>
+                            </div>
+                        </div>
+                        <fieldset class="min-w-0">
+                            <legend class="mb-2 text-xs font-semibold uppercase text-slate-500">Operatore</legend>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-2" id="operator-filter-list">
+                                <label class="flex cursor-pointer items-center gap-2 text-sm text-slate-700"><input type="checkbox" value="01" checked class="h-4 w-4 accent-red-600"><span>Swisscom <span class="font-mono text-xs text-slate-400">01</span></span></label>
+                                <label class="flex cursor-pointer items-center gap-2 text-sm text-slate-700"><input type="checkbox" value="02" checked class="h-4 w-4 accent-red-600"><span>Sunrise <span class="font-mono text-xs text-slate-400">02</span></span></label>
+                                <label class="flex cursor-pointer items-center gap-2 text-sm text-slate-700"><input type="checkbox" value="03" checked class="h-4 w-4 accent-red-600"><span>Salt <span class="font-mono text-xs text-slate-400">03</span></span></label>
+                                <label class="flex cursor-pointer items-center gap-2 text-sm text-slate-700"><input type="checkbox" value="XX" checked class="h-4 w-4 accent-red-600"><span>Altro <span class="font-mono text-xs text-slate-400">XX</span></span></label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div id="cell-filter-panel" class="mt-4 border-t border-slate-200 hidden" aria-labelledby="cell-filter-heading">
                     <div class="mb-2 flex items-center justify-between gap-4">
                         <h3 id="cell-filter-heading" class="text-sm font-semibold text-slate-700">Filtra per Cell ID</h3>
                         <button type="button" id="clear-cell-filters" class="hidden text-xs font-semibold text-slate-500 transition hover:text-slate-900">Azzera filtri</button>

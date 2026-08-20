@@ -48,7 +48,7 @@ hbs.registerHelper({
 
 app.use(session(config.session))
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ limit: 500*1024*1024, extended: true }))
 
 app.use(function (req, res, next) {
     // res.setHeader("Cross-Origin-Opener-Policy", "same-origin");

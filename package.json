@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@bopen/leaflet-area-selection": "^0.7.0",
+    "body-parser": "^2.3.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -8,6 +9,7 @@
     "express-csrf-double-submit-cookie": "^2.0.0",
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
+    "fs": "^0.0.1-security",
     "handlebars-paginate": "^0.1.0",
     "hbs": "^4.2.0",
     "helmet": "^8.1.0",

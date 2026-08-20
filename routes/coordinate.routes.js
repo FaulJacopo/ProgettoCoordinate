@@ -37,6 +37,7 @@ router.post('/get-coordinates-by-selected-case', coordinateController.getCoordin
 router.post('/get-unique-cell-ids-by-case-id', coordinateController.getUniqueCellIdsByCaseId)
 router.post('/create-coordinate',  coordinateController.createCoordinate)
 router.post('/save-coordinate', coordinateController.saveCoordinate)
+router.post('/update-color-by-cell-id', coordinateController.updateColorByCellId)
 router.post('/export-file', coordinateController.exportFileKML)
 
 router.post('/import', upload.single('excel'), async (req, res) => {

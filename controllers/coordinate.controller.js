@@ -7,10 +7,10 @@ let temp_file_content = ``
 
 exports.createCoordinate = async (req, res) => {
     try {
-        const { text_id, lat, lng, case_id, cell_id, power, MCC, MNC } = req.body
+        const { text_id, lat, lng, case_id, cell_id, power, MCC, MNC, color } = req.body
         log.Info(`[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service`)
 
-        const coordinates = await coordinateService.createCoordinate(text_id, lat, lng, case_id, cell_id, power, MCC, MNC)
+        const coordinates = await coordinateService.createCoordinate(text_id, lat, lng, case_id, cell_id, power, MCC, MNC, color)
         if (coordinates === false || coordinates === undefined) {
             return res.status(500).json({ error: 'Errore durante la creazione della coordinata.' })
         }
@@ -138,6 +138,34 @@ exports.deleteCoordinate = async (req, res) => {
     }
 }
 
+exports.updateColorByCellId = async (req, res) => {
+    try {
+        const cell_id = Number(req.body.cell_id)
+        const color = String(req.body.color || '').toLowerCase()
+        const case_id = req.session.case?.id
+
+        if (!Number.isInteger(cell_id) || !/^#[0-9a-f]{6}$/.test(color)) {
+            return res.status(400).json({ error: 'Cell ID o colore non valido.' })
+        }
+
+        if (!case_id) {
+            return res.status(400).json({ error: 'Nessun caso selezionato.' })
+        }
+
+        log.Info(`[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service`)
+        const updated_coordinates = await coordinateService.updateColorByCellId(case_id, cell_id, color)
+
+        if (updated_coordinates === false) {
+            return res.status(500).json({ error: 'Errore durante il salvataggio del colore.' })
+        }
+
+        return res.json({ updated_coordinates, color })
+    } catch (error) {
+        log.Error(`[COORDINATE CONTROLLER] - Error while updating color by cell ID: ${error}`)
+        return res.status(500).json({ error: 'Errore durante il salvataggio del colore.' })
+    }
+}
+
 exports.saveCoordinate = async (req, res) => {
     try {
         const { coordinates } = req.body
@@ -156,7 +184,11 @@ exports.saveCoordinate = async (req, res) => {
                 return res.status(400).json({ error: 'Il Cell ID deve essere un numero intero.' })
             }
 
-            created_coordinates.push({ latitude: coord.latitude, longitude: coord.longitude, text_identifier: coord.text_identifier || "unknown", cell_id, case_id: req.session.case.id, power: coord.power || null, MCC: coord.MCC || null, MNC: coord.MNC || null })
+            const color = /^#[0-9a-f]{6}$/i.test(coord.color || '')
+                ? coord.color.toLowerCase()
+                : null
+
+            created_coordinates.push({ latitude: coord.latitude, longitude: coord.longitude, text_identifier: coord.text_identifier || "unknown", cell_id, case_id: req.session.case.id, power: coord.power || null, MCC: coord.MCC || null, MNC: coord.MNC || null, color })
         }
 
         if (created_coordinates.length === 0) {
@@ -194,14 +226,17 @@ exports.exportFileKML = async (req, res) => {
             return res.status(400).json({ error: 'Nessuna coordinata da esportare.' })
         }
 
+        
         coordinate_list.forEach(coordinate => {
+            let scale = (coordinate.power < -120) ? 1 : (coordinate.power < -105) ? 1.5 : 2;
             temp_file_content += `
 <Placemark>
     <Style>
         <IconStyle>
             <color>${utility.changeToKMLColor(coordinate.color)}</color>
-            <scale>1.8</scale>
+            <scale>${scale}</scale>
             <Icon>
+                // <href>https://map.geo.admin.ch/api/icons/sets/default/icons/001-marker@1x-255,0,0.png</href>
                 <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
             </Icon>
         </IconStyle>

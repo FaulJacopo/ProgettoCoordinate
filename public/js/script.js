@@ -22,6 +22,10 @@ const powerFilterMax = document.getElementById('power-filter-max');
 const powerFilterValue = document.getElementById('power-filter-value');
 const operatorFilterList = document.getElementById('operator-filter-list');
 const resetDataFiltersButton = document.getElementById('reset-data-filters');
+const cellColorPanel = document.getElementById('cell-color-panel');
+const cellColorForm = document.getElementById('cell-color-form');
+const cellColorId = document.getElementById('cell-color-id');
+const cellColorValue = document.getElementById('cell-color-value');
 
 clearCellFiltersButton?.addEventListener('click', () => {
     selected_cell_ids.clear();
@@ -61,6 +65,15 @@ resetDataFiltersButton?.addEventListener('click', () => {
     operatorFilterList.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = true; });
     renderDataFilters();
     applyCellFilters();
+});
+
+cellColorId?.addEventListener('change', () => {
+    cellColorValue.value = getCellIdColor(cellColorId.value);
+});
+
+cellColorForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    changeColorByCellId(cellColorForm);
 });
 
 button?.addEventListener('click', () => {
@@ -129,10 +142,10 @@ function updateMap(coordinate_index) {
     const coordinate = coordinates[coordinate_index];
     const latitude = getCoordinateValue(coordinate, 'lat', 'latitude');
     const longitude = getCoordinateValue(coordinate, 'lng', 'longitude');
-    const marker_color = cellIdToColor(coordinate.cell_id);
+    const marker_color = getCoordinateColor(coordinate);
     const marker_size = (coordinate.power < -120) ? 16 : (coordinate.power < -105) ? 26 : 35;
 
-    coordinate.color = marker_color
+    coordinate.color = marker_color;
 
     const marker_icon = L.divIcon({
         className: 'cell-marker-icon',
@@ -151,7 +164,15 @@ function updateMap(coordinate_index) {
             Power: ${coordinate.power ?? '-'}<br>
             MCC: ${coordinate.MCC ?? '-'}<br>
             MNC: ${coordinate.MNC ?? '-'}
-        </div>`;
+        </div>
+        <div class="mt-4 border-t border-slate-200 pt-3">
+            <p class="mb-2 text-xs font-semibold uppercase text-slate-500">Colore Cell ID</p>
+        </div>
+        <form class="flex items-center gap-2" onsubmit="event.preventDefault(); changeColorByCellId(this)">
+            <input type="hidden" name="cell_id" value="${coordinate.cell_id}">
+            <input type="color" name="color" value="${coordinate.color}" aria-label="Colore del Cell ID ${coordinate.cell_id}" class="h-9 w-12 cursor-pointer rounded-md border border-slate-200 bg-white p-1">
+            <button type="submit" class="h-9 rounded-md bg-slate-900 px-3 text-sm font-semibold text-white transition hover:bg-slate-700">Applica</button>
+        </form>`;
 
     const marker = L.marker([latitude, longitude], { icon: marker_icon }).bindPopup(popupContent);
     coordinate_markers.push({ marker, cell_id: String(coordinate.cell_id), coordinate });
@@ -259,12 +280,16 @@ function renderCellFilters() {
         }
     }
 
-    cellFilterList.replaceChildren();
-    cellFilterPanel.classList.toggle('hidden', cell_ids.length === 0);
-    clearCellFiltersButton.classList.toggle('hidden', selected_cell_ids.size === 0);
+    cellFilterList?.replaceChildren();
+    cellFilterPanel?.classList.toggle('hidden', cell_ids.length === 0);
+    cellColorPanel?.classList.toggle('hidden', cell_ids.length === 0);
+    clearCellFiltersButton?.classList.toggle('hidden', selected_cell_ids.size === 0);
+
+    const previous_color_cell_id = cellColorId?.value;
+    cellColorId?.replaceChildren();
 
     cell_ids.forEach(cell_id => {
-        const marker_color = cellIdToColor(cell_id);
+        const marker_color = getCellIdColor(cell_id);
         const is_selected = selected_cell_ids.has(cell_id);
         const badge = document.createElement('button');
 
@@ -275,8 +300,20 @@ function renderCellFilters() {
         badge.style.setProperty('--cell-color', marker_color);
         badge.style.setProperty('--cell-contrast', getContrastColor(marker_color));
         badge.addEventListener('click', () => toggleCellFilter(cell_id));
-        cellFilterList.appendChild(badge);
+        cellFilterList?.appendChild(badge);
+
+        const option = document.createElement('option');
+        option.value = cell_id;
+        option.textContent = cell_id;
+        cellColorId?.appendChild(option);
     });
+
+    if (cellColorId && cell_ids.length > 0) {
+        cellColorId.value = available_cell_ids.has(previous_color_cell_id)
+            ? previous_color_cell_id
+            : cell_ids[0];
+        cellColorValue.value = getCellIdColor(cellColorId.value);
+    }
 }
 
 function toggleCellFilter(cell_id) {
@@ -335,6 +372,21 @@ function cellIdToColor(cell_id) {
     return hslToHex(hue, saturation, lightness);
 }
 
+function isValidHexColor(color) {
+    return typeof color === 'string' && /^#[0-9a-f]{6}$/i.test(color);
+}
+
+function getCoordinateColor(coordinate) {
+    return isValidHexColor(coordinate.color)
+        ? coordinate.color
+        : cellIdToColor(coordinate.cell_id);
+}
+
+function getCellIdColor(cell_id) {
+    const coordinate = coordinates.find(item => String(item.cell_id) === String(cell_id));
+    return coordinate ? getCoordinateColor(coordinate) : cellIdToColor(cell_id);
+}
+
 function hslToHex(hue, saturation, lightness) {
     const normalized_saturation = saturation / 100;
     const normalized_lightness = lightness / 100;
@@ -391,7 +443,7 @@ function updateViewCoordinate() {
         const latitude = getCoordinateValue(element, 'lat', 'latitude');
         const longitude = getCoordinateValue(element, 'lng', 'longitude');
         const identifier = element.text_identifier?.trim() || 'Senza identificativo';
-        const marker_color = cellIdToColor(element.cell_id);
+        const marker_color = getCoordinateColor(element);
 
         const list_item = $('<li>', {
             class: 'flex items-start gap-3 px-5 py-4 transition hover:bg-slate-50'
@@ -514,6 +566,50 @@ function showFilteredCells(filtered_coordinates) {
 
     applyCellFilters();
 }
+
+async function changeColorByCellId(form) {
+    const cell_id = String(form.elements.cell_id.value);
+    const color = form.elements.color.value;
+
+    if (!isValidHexColor(color)) return;
+
+    const submit_button = form.querySelector('button[type="submit"]');
+    submit_button?.setAttribute('disabled', '');
+
+    try {
+        const response = await fetch('/coordinates/update-color-by-cell-id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ cell_id, color })
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            throw new Error(result.error || 'Errore durante il salvataggio del colore.');
+        }
+
+        let has_matching_coordinates = false;
+        coordinates.forEach(coordinate => {
+            if (String(coordinate.cell_id) === cell_id) {
+                coordinate.color = color;
+                has_matching_coordinates = true;
+            }
+        });
+
+        if (has_matching_coordinates) {
+            refreshCoordinates();
+        }
+    } catch (error) {
+        showErrorNotification(error.message || 'Errore durante il salvataggio del colore.');
+    } finally {
+        if (submit_button?.isConnected) {
+            submit_button.removeAttribute('disabled');
+        }
+    }
+}
+
 
 async function saveCaseCoordinates() {
     let temp_coordinates = coordinates.filter(el => el.id == -1)

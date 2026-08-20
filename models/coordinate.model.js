@@ -20,6 +20,13 @@ const Coordinate = sequelize.define('coordinate', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    color: {
+        type: DataTypes.STRING(7),
+        allowNull: true,
+        validate: {
+            is: /^#[0-9a-f]{6}$/i,
+        },
+    },
 }, {
     charset: 'utf8',
     collate: 'utf8_general_ci',
@@ -56,6 +63,13 @@ async function syncCoordinateTable() {
             await queryInterface.addColumn(tableName, 'cell_id', {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+            });
+        }
+
+        if (!columns.color) {
+            await queryInterface.addColumn(tableName, 'color', {
+                type: DataTypes.STRING(7),
+                allowNull: true,
             });
         }
     } catch (error) {

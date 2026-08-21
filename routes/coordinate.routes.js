@@ -37,6 +37,7 @@ router.post('/get-coordinates-by-selected-case', coordinateController.getCoordin
 router.post('/get-unique-cell-ids-by-case-id', coordinateController.getUniqueCellIdsByCaseId)
 router.post('/create-coordinate',  coordinateController.createCoordinate)
 router.post('/save-coordinate', coordinateController.saveCoordinate)
+router.post('/delete-coordinates-by-case-id', coordinateController.deleteCoordinatesByCaseId)
 router.post('/update-color-by-cell-id', coordinateController.updateColorByCellId)
 router.post('/export-file', coordinateController.exportFileKML)
 router.post('/export-file-by-cell', coordinateController.exportFileKMLByCellId)
@@ -47,6 +48,11 @@ router.post('/import', upload.single('excel'), async (req, res) => {
 
         if (!req.file) {
             return res.status(400).json({ error: 'Nessun file caricato.' });
+        }
+
+        const marker_shape = String(req.body.marker_shape || 'circle').toLowerCase();
+        if (!['circle', 'triangle'].includes(marker_shape)) {
+            return res.status(400).json({ error: 'Forma marker non valida.' });
         }
 
         const workbook = XLSX.read(req.file.buffer, { type: 'buffer' });
@@ -78,7 +84,8 @@ router.post('/import', upload.single('excel'), async (req, res) => {
                 cell_id,
                 power: Number.isFinite(power) ? power : null,
                 MCC: Number.isFinite(MCC) ? MCC : null,
-                MNC: Number.isFinite(MNC) ? MNC : null
+                MNC: Number.isFinite(MNC) ? MNC : null,
+                marker_shape
             });
         }
 

@@ -27,6 +27,14 @@ const Coordinate = sequelize.define('coordinate', {
             is: /^#[0-9a-f]{6}$/i,
         },
     },
+    marker_shape: {
+        type: DataTypes.STRING(8),
+        allowNull: false,
+        defaultValue: 'circle',
+        validate: {
+            isIn: [['circle', 'triangle']],
+        },
+    },
 }, {
     charset: 'utf8',
     collate: 'utf8_general_ci',
@@ -70,6 +78,14 @@ async function syncCoordinateTable() {
             await queryInterface.addColumn(tableName, 'color', {
                 type: DataTypes.STRING(7),
                 allowNull: true,
+            });
+        }
+
+        if (!columns.marker_shape) {
+            await queryInterface.addColumn(tableName, 'marker_shape', {
+                type: DataTypes.STRING(8),
+                allowNull: false,
+                defaultValue: 'circle',
             });
         }
     } catch (error) {

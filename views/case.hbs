@@ -137,9 +137,29 @@
                             <div><label for="MCC" class="mb-1.5 block text-sm font-medium text-slate-700">MCC</label><input type="number" id="MCC" name="MCC" min="0" step="1" placeholder="297" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
                             <div><label for="MNC" class="mb-1.5 block text-sm font-medium text-slate-700">MNC</label><input type="number" id="MNC" name="MNC" min="0" step="1" placeholder="297" class="block h-10 w-full rounded-lg border border-slate-200 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"></div>
                         </div>
+                        <fieldset class="border-t border-slate-100 pt-4">
+                            <legend class="mb-2 text-xs font-semibold uppercase text-slate-500">Forma file importato</legend>
+                            <div class="grid grid-cols-2 gap-2">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="import_marker_shape" value="circle" checked class="peer sr-only">
+                                    <span class="flex h-9 items-center justify-center gap-2 rounded-md border border-slate-200 text-sm font-medium text-slate-600 transition peer-checked:border-purple-700 peer-checked:bg-purple-50 peer-checked:text-purple-900 peer-focus-visible:ring-2 peer-focus-visible:ring-purple-500 peer-focus-visible:ring-offset-2">
+                                        <i class="fa-regular fa-circle text-xs" aria-hidden="true"></i> Cerchio
+                                    </span>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="import_marker_shape" value="triangle" class="peer sr-only">
+                                    <span class="flex h-9 items-center justify-center gap-2 rounded-md border border-slate-200 text-sm font-medium text-slate-600 transition peer-checked:border-purple-700 peer-checked:bg-purple-50 peer-checked:text-purple-900 peer-focus-visible:ring-2 peer-focus-visible:ring-purple-500 peer-focus-visible:ring-offset-2">
+                                        <i class="fa-solid fa-caret-up" aria-hidden="true"></i> Triangolo
+                                    </span>
+                                </label>
+                            </div>
+                        </fieldset>
                         <div class="grid grid-cols-2 gap-2">
                             <button type="submit" class="inline-flex h-10 w-full items-center justify-center rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">Aggiungi punto <span class="ml-2" aria-hidden="true">-&gt;</span></button>
                             <button type="button" id="import-excel" class="inline-flex h-10 w-full items-center justify-center rounded-lg bg-purple-900 px-4 text-sm font-semibold text-white transition hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Importa Excel</button>
+                        </div>
+                        <div class="grid gap-2 mt-2">
+                            <button type="button" id="cancel-coordinate" onclick="cancelAll()" class="inline-flex h-10 w-full items-center justify-center rounded-lg bg-red-400 px-4 text-sm font-semibold text-white transition hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 border-red-600 hover:text-white focus:ring-offset-2">Cancella Coordinate</button>
                         </div>
                     </form>
                     <form id="excel-form" onsubmit="event.preventDefault();">
@@ -163,9 +183,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="/vendor/leaflet-area-selection/index.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet-tilelayer-swiss@2.4.0/dist/Leaflet.TileLayer.Swiss.umd.js"></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script>
-        const map = L.map('map').setView([45.998, 8.75], 9);
+        const map = L.map('map', { preferCanvas: true }).setView([45.998, 8.75], 9);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; OpenStreetMap contributors'

@@ -1,11 +1,11 @@
 const log = require('../utility/logger')
 const { Coordinate } = require('../models/coordinate.model')
 
-exports.createCoordinate = async (text_id, lat, lng, case_id, cell_id, power, MCC, MNC, color = null) => {
+exports.createCoordinate = async (text_id, lat, lng, case_id, cell_id, power, MCC, MNC, color = null, marker_shape = 'circle') => {
     try {
         log.Info(`[COORDINATE SERVICE] - Requested method to create coordinates`)
 
-        ;(await Coordinate.create({ text_identifier: text_id, latitude: lat, longitude: lng, case_id, cell_id, power, MCC, MNC, color })).save()
+        ;(await Coordinate.create({ text_identifier: text_id, latitude: lat, longitude: lng, case_id, cell_id, power, MCC, MNC, color, marker_shape })).save()
         return this.getCoordinates()
 
     } catch (error) {
@@ -22,7 +22,7 @@ exports.getCoordinates = async () => {
         let coordinates_array = []
 
         coordinates.forEach(element => {
-            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id, power: element.power, MCC: element.MCC, MNC: element.MNC, color: element.color })
+            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id, power: element.power, MCC: element.MCC, MNC: element.MNC, color: element.color, marker_shape: element.marker_shape })
         })
 
         return coordinates_array
@@ -42,7 +42,7 @@ exports.getCoordinateById = async (coordinates_id) => {
             return false
         }
 
-        let sel_coordinate_json = { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id, power: sel_coordinate.power, MCC: sel_coordinate.MCC, MNC: sel_coordinate.MNC, color: sel_coordinate.color }
+        let sel_coordinate_json = { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id, power: sel_coordinate.power, MCC: sel_coordinate.MCC, MNC: sel_coordinate.MNC, color: sel_coordinate.color, marker_shape: sel_coordinate.marker_shape }
 
         return sel_coordinate_json
 
@@ -60,7 +60,7 @@ exports.getCoordinateByCaseId = async (case_id) => {
         let coordinates_array = []
 
         coordinates.forEach(element => {
-            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id, power: element.power, MCC: element.MCC, MNC: element.MNC, color: element.color })
+            coordinates_array.push({ id: element.id, text_identifier: element.text_identifier, longitude: element.longitude, latitude: element.latitude, case_id: element.case_id, cell_id: element.cell_id, power: element.power, MCC: element.MCC, MNC: element.MNC, color: element.color, marker_shape: element.marker_shape })
         })
 
         return coordinates_array
@@ -99,7 +99,7 @@ exports.updateCoordinate = async (coordinates_id, text_id, lat, lng, power) => {
         sel_coordinate.power = power
 
         await sel_coordinate.save()
-        return { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id, power: sel_coordinate.power, MCC: sel_coordinate.MCC, MNC: sel_coordinate.MNC, color: sel_coordinate.color }
+        return { id: sel_coordinate.id, text_identifier: sel_coordinate.text_identifier, longitude: sel_coordinate.longitude, latitude: sel_coordinate.latitude, case_id: sel_coordinate.case_id, cell_id: sel_coordinate.cell_id, power: sel_coordinate.power, MCC: sel_coordinate.MCC, MNC: sel_coordinate.MNC, color: sel_coordinate.color, marker_shape: sel_coordinate.marker_shape }
 
     } catch (error) {
         log.Error(`[COORDINATE SERVICE] - Something went wrong updating coordinate: ${error}`)
@@ -119,6 +119,20 @@ exports.deleteCoordinate = async (coordinates_id) => {
         return false
     }
 }
+
+exports.deleteCoordinatesByCaseId =  async (case_id) => {
+    try {
+        log.Info(`[COORDINATE SERVICE] - Requested method to delete coordinates by case id`)
+
+        let deleted_coordinate = await Coordinate.destroy({ where: { case_id }})
+        return this.getCoordinates()
+
+    } catch (error) {
+        log.Error(`[COORDINATE SERVICE] - Something went wrong deleting coordinate: ${error}`)
+        return false
+    }
+}
+
 
 exports.updateColorByCellId = async (case_id, cell_id, color) => {
     try {

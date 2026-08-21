@@ -8,6 +8,13 @@ let power_filter_min = null;
 let power_filter_max = null;
 let power_available_min = null;
 let power_available_max = null;
+let coordinate_marker_layer = null;
+let cell_filter_timeout = null;
+let coordinate_list_rendered_count = 0;
+
+const CELL_FILTER_DELAY = 200;
+const COORDINATE_LIST_BATCH_SIZE = 50;
+const COORDINATE_LIST_SCROLL_THRESHOLD = 160;
 
 const selected_cell_ids = new Set();
 const selected_operator_codes = new Set(['01', '02', '03', 'XX']);
@@ -26,25 +33,26 @@ const cellColorPanel = document.getElementById('cell-color-panel');
 const cellColorForm = document.getElementById('cell-color-form');
 const cellColorId = document.getElementById('cell-color-id');
 const cellColorValue = document.getElementById('cell-color-value');
+const coordinateList = document.getElementById('coordinate-list');
 
 clearCellFiltersButton?.addEventListener('click', () => {
     selected_cell_ids.clear();
     renderCellFilters();
-    applyCellFilters();
+    scheduleCellFilters();
 });
 
 powerFilterMin?.addEventListener('input', () => {
     power_filter_min = Math.min(Number(powerFilterMin.value), Number(powerFilterMax.value));
     powerFilterMin.value = power_filter_min;
     updatePowerFilterValue();
-    applyCellFilters();
+    scheduleCellFilters();
 });
 
 powerFilterMax?.addEventListener('input', () => {
     power_filter_max = Math.max(Number(powerFilterMax.value), Number(powerFilterMin.value));
     powerFilterMax.value = power_filter_max;
     updatePowerFilterValue();
-    applyCellFilters();
+    scheduleCellFilters();
 });
 
 operatorFilterList?.addEventListener('change', event => {
@@ -54,7 +62,7 @@ operatorFilterList?.addEventListener('change', event => {
     operatorFilterList.querySelectorAll('input[type="checkbox"]:checked').forEach(input => {
         selected_operator_codes.add(input.value);
     });
-    applyCellFilters();
+    scheduleCellFilters();
 });
 
 resetDataFiltersButton?.addEventListener('click', () => {
@@ -64,7 +72,15 @@ resetDataFiltersButton?.addEventListener('click', () => {
     ['01', '02', '03', 'XX'].forEach(code => selected_operator_codes.add(code));
     operatorFilterList.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = true; });
     renderDataFilters();
-    applyCellFilters();
+    scheduleCellFilters();
+});
+
+coordinateList?.addEventListener('scroll', () => {
+    const distance_from_bottom = coordinateList.scrollHeight - coordinateList.scrollTop - coordinateList.clientHeight;
+
+    if (distance_from_bottom <= COORDINATE_LIST_SCROLL_THRESHOLD) {
+        renderNextCoordinateBatch();
+    }
 });
 
 cellColorId?.addEventListener('change', () => {
@@ -89,6 +105,7 @@ fileInput?.addEventListener('change', async () => {
 
     const formData = new FormData();
     formData.append('excel', file);
+    formData.append('marker_shape', getSelectedImportMarkerShape());
 
     try {
 
@@ -119,6 +136,7 @@ fileInput?.addEventListener('change', async () => {
 });
 
 function addCoordinate(form) {
+    const import_marker_shape = getSelectedImportMarkerShape();
     const lat = form.latitude.value;
     const lng = form.longitude.value;
     const text_identifier = form.description.value;
@@ -128,7 +146,7 @@ function addCoordinate(form) {
     const MNC = form.MNC.value || null;
 
     if (lat && lng && Number.isInteger(cell_id)) {
-        const coordinate = { id: -1, latitude: parseFloat(lat), longitude: parseFloat(lng), text_identifier: text_identifier, cell_id, power, MCC, MNC };
+        const coordinate = { id: -1, latitude: parseFloat(lat), longitude: parseFloat(lng), text_identifier: text_identifier, cell_id, power, MCC, MNC, marker_shape: 'circle' };
         coordinates.push(coordinate);
         updateMap(coordinates.length - 1);
         updateViewCoordinate();
@@ -136,8 +154,68 @@ function addCoordinate(form) {
         renderDataFilters();
         applyCellFilters();
         form.reset();
+        const selected_shape_input = form.querySelector(`input[name="import_marker_shape"][value="${import_marker_shape}"]`);
+        if (selected_shape_input) selected_shape_input.checked = true;
         showSuccessNotification('Coordinata aggiunta con successo.');
     }
+}
+
+function normalizeMarkerShape(marker_shape) {
+    return marker_shape === 'triangle' ? 'triangle' : 'circle';
+}
+
+function getSelectedImportMarkerShape() {
+    return normalizeMarkerShape(document.querySelector('input[name="import_marker_shape"]:checked')?.value);
+}
+
+function ensureTriangleCanvasSupport() {
+    if (L.TriangleMarker) return;
+
+    L.Canvas.include({
+        _updateTriangle(layer) {
+            if (!this._drawing || layer._empty()) return;
+
+            const point = layer._point;
+            const radius = Math.max(Math.round(layer._radius), 1);
+            const context = this._ctx;
+
+            context.beginPath();
+            context.moveTo(point.x, point.y - radius);
+            context.lineTo(point.x + radius, point.y + radius);
+            context.lineTo(point.x - radius, point.y + radius);
+            context.closePath();
+            this._fillStroke(context, layer);
+        }
+    });
+
+    L.TriangleMarker = L.CircleMarker.extend({
+        _updatePath() {
+            this._renderer._updateTriangle(this);
+        },
+
+        _containsPoint(point) {
+            const radius = this._radius + this._clickTolerance();
+            const center = this._point;
+            const vertices = [
+                L.point(center.x, center.y - radius),
+                L.point(center.x + radius, center.y + radius),
+                L.point(center.x - radius, center.y + radius)
+            ];
+            const signed_area = (first, second, third) => (
+                (first.x - third.x) * (second.y - third.y) -
+                (second.x - third.x) * (first.y - third.y)
+            );
+            const signs = [
+                signed_area(point, vertices[0], vertices[1]),
+                signed_area(point, vertices[1], vertices[2]),
+                signed_area(point, vertices[2], vertices[0])
+            ];
+
+            return !(signs.some(value => value < 0) && signs.some(value => value > 0));
+        }
+    });
+
+    L.triangleMarker = (latlng, options) => new L.TriangleMarker(latlng, options);
 }
 
 function updateMap(coordinate_index) {
@@ -146,43 +224,79 @@ function updateMap(coordinate_index) {
     const longitude = getCoordinateValue(coordinate, 'lng', 'longitude');
     const marker_color = getCoordinateColor(coordinate);
     const marker_size = (coordinate.power < -120) ? 16 : (coordinate.power < -105) ? 26 : 35;
+    const marker_shape = normalizeMarkerShape(coordinate.marker_shape);
 
     coordinate.color = marker_color;
+    coordinate.marker_shape = marker_shape;
+    ensureCoordinateMarkerLayer();
+    ensureTriangleCanvasSupport();
 
-    const marker_icon = L.divIcon({
-        className: 'cell-marker-icon',
-        html: `<span class="cell-marker" style="--marker-color: ${marker_color}; --marker-size: ${marker_size}px;"></span>`,
-        iconSize: [marker_size, marker_size],
-        iconAnchor: [marker_size / 2, marker_size / 2],
-        popupAnchor: [0, -marker_size / 2]
+    const create_marker = marker_shape === 'triangle' ? L.triangleMarker : L.circleMarker;
+    const marker = create_marker([latitude, longitude], {
+        radius: marker_size / 2,
+        color: '#ffffff',
+        weight: 1,
+        opacity: 1,
+        fillColor: marker_color,
+        fillOpacity: 1,
+        bubblingMouseEvents: false
     });
 
-    const popupContent = `
+    const open_popup = () => {
+        marker.off('click', open_popup);
+        marker.bindPopup(createCoordinatePopupContent(coordinate)).openPopup();
+    };
+    marker.on('click', open_popup);
+
+    coordinate_markers.push({ marker, cell_id: String(coordinate.cell_id), coordinate });
+    coordinate_marker_layer.addLayer(marker);
+}
+
+function ensureCoordinateMarkerLayer() {
+    if (!coordinate_marker_layer) {
+        coordinate_marker_layer = L.layerGroup().addTo(map);
+    }
+}
+
+function escapeHtml(value) {
+    return String(value ?? '-').replace(/[&<>'"]/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    })[character]);
+}
+
+function createCoordinatePopupContent(coordinate) {
+    const latitude = getCoordinateValue(coordinate, 'lat', 'latitude');
+    const longitude = getCoordinateValue(coordinate, 'lng', 'longitude');
+    const cell_id = coordinate.cell_id ?? '-';
+    const marker_color = getCoordinateColor(coordinate);
+
+    return `
         <div style="min-width: 180px;">
-            <strong>${coordinate.text_identifier}</strong><br>
-            Latitude: ${latitude ?? '-'}<br>
-            Longitude: ${longitude ?? '-'}<br>
-            Cell ID: ${coordinate.cell_id ?? '-'}<br>
-            Power: ${coordinate.power ?? '-'}<br>
-            MCC: ${coordinate.MCC ?? '-'}<br>
-            MNC: ${coordinate.MNC ?? '-'}
+            <strong>${escapeHtml(coordinate.text_identifier || 'Senza identificativo')}</strong><br>
+            Latitude: ${escapeHtml(latitude)}<br>
+            Longitude: ${escapeHtml(longitude)}<br>
+            Cell ID: ${escapeHtml(cell_id)}<br>
+            Power: ${escapeHtml(coordinate.power)}<br>
+            MCC: ${escapeHtml(coordinate.MCC)}<br>
+            MNC: ${escapeHtml(coordinate.MNC)}
         </div>
         <div class="mt-4 border-t border-slate-200 pt-3">
             <p class="mb-2 text-xs font-semibold uppercase text-slate-500">Colore Cell ID</p>
         </div>
         <form class="flex items-center gap-2" onsubmit="event.preventDefault(); changeColorByCellId(this)">
-            <input type="hidden" name="cell_id" value="${coordinate.cell_id}">
-            <input type="color" name="color" value="${coordinate.color}" aria-label="Colore del Cell ID ${coordinate.cell_id}" class="h-9 w-12 cursor-pointer rounded-md border border-slate-200 bg-white p-1">
+            <input type="hidden" name="cell_id" value="${escapeHtml(cell_id)}">
+            <input type="color" name="color" value="${marker_color}" aria-label="Colore del Cell ID ${escapeHtml(cell_id)}" class="h-9 w-12 cursor-pointer rounded-md border border-slate-200 bg-white p-1">
             <button type="submit" class="h-9 rounded-md bg-slate-900 px-3 text-sm font-semibold text-white transition hover:bg-slate-700">Applica</button>
         </form>`;
-
-    const marker = L.marker([latitude, longitude], { icon: marker_icon }).bindPopup(popupContent);
-    coordinate_markers.push({ marker, cell_id: String(coordinate.cell_id), coordinate });
-    marker.addTo(map);
 }
 
 function refreshCoordinates() {
-    coordinate_markers.forEach(({ marker }) => map.removeLayer(marker));
+    ensureCoordinateMarkerLayer();
+    coordinate_marker_layer.clearLayers();
     coordinate_markers = [];
 
     coordinates.forEach((_, index) => updateMap(index));
@@ -326,11 +440,22 @@ function toggleCellFilter(cell_id) {
     }
 
     renderCellFilters();
-    applyCellFilters();
+    scheduleCellFilters();
+}
+
+function scheduleCellFilters() {
+    window.clearTimeout(cell_filter_timeout);
+    cell_filter_timeout = window.setTimeout(() => {
+        cell_filter_timeout = null;
+        applyCellFilters();
+    }, CELL_FILTER_DELAY);
 }
 
 function applyCellFilters() {
+    window.clearTimeout(cell_filter_timeout);
+    cell_filter_timeout = null;
     filtered_coordinates = [];
+    ensureCoordinateMarkerLayer();
 
     coordinate_markers.forEach(({ marker, cell_id, coordinate }) => {
         const matches_cell_filter = selected_cell_ids.size === 0 || selected_cell_ids.has(cell_id);
@@ -345,16 +470,16 @@ function applyCellFilters() {
         );
         const matches_operator_filter = selected_operator_codes.has(getOperatorCode(coordinate.MNC ?? coordinate.mnc));
         const should_be_visible = matches_cell_filter && matches_area_filter && matches_power_filter && matches_operator_filter;
-        const is_visible = map.hasLayer(marker);
+        const is_visible = coordinate_marker_layer.hasLayer(marker);
 
         if (should_be_visible) {
             filtered_coordinates.push(coordinate);
         }
 
         if (should_be_visible && !is_visible) {
-            marker.addTo(map);
+            coordinate_marker_layer.addLayer(marker);
         } else if (!should_be_visible && is_visible) {
-            map.removeLayer(marker);
+            coordinate_marker_layer.removeLayer(marker);
         }
     });
 }
@@ -430,6 +555,11 @@ function formatCoordinate(value) {
 
 function updateViewCoordinate() {
     coordinate_view.empty();
+    coordinate_list_rendered_count = 0;
+
+    if (coordinateList) {
+        coordinateList.scrollTop = 0;
+    }
 
     if (coordinates.length === 0) {
         coordinate_view.append(
@@ -441,7 +571,29 @@ function updateViewCoordinate() {
         return;
     }
 
-    coordinates.forEach((element, index) => {
+    renderNextCoordinateBatch();
+}
+
+function renderNextCoordinateBatch() {
+    if (!coordinateList || coordinate_list_rendered_count >= coordinates.length) {
+        return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    const batch_end = Math.min(
+        coordinate_list_rendered_count + COORDINATE_LIST_BATCH_SIZE,
+        coordinates.length
+    );
+
+    for (let index = coordinate_list_rendered_count; index < batch_end; index++) {
+        fragment.appendChild(createCoordinateListItem(coordinates[index], index));
+    }
+
+    coordinateList.appendChild(fragment);
+    coordinate_list_rendered_count = batch_end;
+}
+
+function createCoordinateListItem(element, index) {
         const latitude = getCoordinateValue(element, 'lat', 'latitude');
         const longitude = getCoordinateValue(element, 'lng', 'longitude');
         const identifier = element.text_identifier?.trim() || 'Senza identificativo';
@@ -517,8 +669,7 @@ function updateViewCoordinate() {
         coordinate_data.append(latitude_group, longitude_group, cell_id_group, power_group, MCC_group, MNC_group);
         content.append(title, coordinate_data);
         list_item.append(number, content);
-        coordinate_view.append(list_item);
-    });
+        return list_item[0];
 }
 
 function filterCoordinatesByLatLong(areaCoordinates) {
@@ -566,7 +717,7 @@ function showFilteredCells(filtered_coordinates) {
         ? new Set(filtered_coordinates)
         : null;
 
-    applyCellFilters();
+    scheduleCellFilters();
 }
 
 async function changeColorByCellId(form) {
@@ -601,7 +752,14 @@ async function changeColorByCellId(form) {
         });
 
         if (has_matching_coordinates) {
-            refreshCoordinates();
+            coordinate_markers.forEach(({ marker, cell_id: marker_cell_id, coordinate }) => {
+                if (marker_cell_id !== cell_id) return;
+
+                marker.setStyle({ fillColor: color });
+                marker.getPopup()?.setContent(createCoordinatePopupContent(coordinate));
+            });
+            updateViewCoordinate();
+            renderCellFilters();
         }
         showSuccessNotification('Colore salvato con successo.');
     } catch (error) {
@@ -670,6 +828,24 @@ async function exportFileKML(type = 0) {
         
     } catch (error) {
         showErrorNotification(error.message || 'Errore durante l\'esportazione del file KML.');
+    }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function cancelAll() {
+    if (confirm("Sei sicuro di voler eliminare tutte le coordinate?")) {
+        $.post('/coordinates/delete-coordinates-by-case-id', {}, function (res) {
+            if (res.error) {
+                showErrorNotification(res.error)
+            } else {
+                showSuccessNotification(`Coordinate eliminate con successo`)
+                sleep(2000)
+                window.location.reload()
+            }
+        })
     }
 }
 

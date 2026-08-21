@@ -39,6 +39,7 @@ router.post('/create-coordinate',  coordinateController.createCoordinate)
 router.post('/save-coordinate', coordinateController.saveCoordinate)
 router.post('/update-color-by-cell-id', coordinateController.updateColorByCellId)
 router.post('/export-file', coordinateController.exportFileKML)
+router.post('/export-file-by-cell', coordinateController.exportFileKMLByCellId)
 
 router.post('/import', upload.single('excel'), async (req, res) => {
     try {

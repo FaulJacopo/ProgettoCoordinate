@@ -109,6 +109,7 @@ fileInput?.addEventListener('change', async () => {
         } else
             coordinates = JSON.parse(result.coordinates);
         refreshCoordinates();
+        showSuccessNotification('File importato con successo.');
 
     } catch (error) {
         showErrorNotification(error.message || 'Errore durante l\'importazione del file.');
@@ -135,6 +136,7 @@ function addCoordinate(form) {
         renderDataFilters();
         applyCellFilters();
         form.reset();
+        showSuccessNotification('Coordinata aggiunta con successo.');
     }
 }
 
@@ -601,6 +603,7 @@ async function changeColorByCellId(form) {
         if (has_matching_coordinates) {
             refreshCoordinates();
         }
+        showSuccessNotification('Colore salvato con successo.');
     } catch (error) {
         showErrorNotification(error.message || 'Errore durante il salvataggio del colore.');
     } finally {
@@ -622,20 +625,22 @@ async function saveCaseCoordinates() {
                 showErrorNotification(res.error)
                 window.location.href = res.redirect
             } else {
-                console.log(`Coordinate salvate con successo!`)
+                console.log("Coordinate Salvate con successo")
+                showSuccessNotification('Coordinate salvate con successo.')
             }
         })
     }
 }
 
-async function exportFileKML() {
+async function exportFileKML(type = 0) {
     try {
         let payload_limit = 250
         let times = Math.ceil(filtered_coordinates.length / payload_limit)
         let response = ""
+        let url = (type == 0) ? `/coordinates/export-file` : `/coordinates/export-file-by-cell`
 
         for (let i = 0; i < times; i++) {
-            response = await fetch('/coordinates/export-file', {
+            response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -643,7 +648,6 @@ async function exportFileKML() {
                 body: JSON.stringify({ coordinates_to_export: filtered_coordinates.slice(i * payload_limit, (i + 1) * payload_limit), status: i == (times - 1)})
             });
         }
-
 
         if (!response.ok) {
             const result = await response.json().catch(() => ({}));
@@ -663,6 +667,7 @@ async function exportFileKML() {
         downloadLink.click();
         downloadLink.remove();
         URL.revokeObjectURL(downloadUrl);
+        
     } catch (error) {
         showErrorNotification(error.message || 'Errore durante l\'esportazione del file KML.');
     }

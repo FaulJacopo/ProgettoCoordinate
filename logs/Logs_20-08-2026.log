@@ -1,0 +1,839 @@
+07:16:59 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:16:59 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:17:00 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:17:00 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:17:00 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:17:00 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:19:24 | Info | 'Server Running at 8080' | 
+07:19:33 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:19:33 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:19:37 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:19:37 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:19:37 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:19:37 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:20:18 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:20:18 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:20:19 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:20:19 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:20:19 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:20:19 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:20:35 | Info | 'Server Running at 8080' | 
+07:20:35 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:20:35 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:20:36 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:20:36 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:20:36 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:20:36 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:21:37 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:21:37 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:21:57 | Info | 'Server Running at 8080' | 
+07:21:59 | Info | 'Server Running at 8080' | 
+07:22:03 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:22:03 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:22:04 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:22:04 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:22:04 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:22:04 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:22:48 | Info | 'Server Running at 8080' | 
+07:22:49 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:22:49 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:22:50 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:22:50 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:22:50 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:22:50 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:24:20 | Info | 'Server Running at 8080' | 
+07:28:40 | Info | 'Server Running at 8080' | 
+07:28:40 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:28:40 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:28:41 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:28:41 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:28:41 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:28:41 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:33:12 | Info | 'Server Running at 8080' | 
+07:33:12 | Info | 'Server Running at 8080' | 
+07:33:35 | Info | 'Server Running at 8080' | 
+07:33:43 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+07:33:43 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+07:33:45 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+07:33:45 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+07:33:45 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+07:33:45 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+07:33:55 | Info | 'Server Running at 8080' | 
+07:35:51 | Info | 'Server Running at 8080' | 
+07:36:57 | Info | 'Server Running at 8081' | 
+08:07:45 | Info | 'Server Running at 8080' | 
+08:07:47 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:07:47 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:07:47 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:07:47 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:07:47 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:07:47 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:16:41 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:16:41 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:17:03 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:17:03 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:17:05 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:17:05 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:17:05 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:17:05 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:17:51 | Info | 'Server Running at 8080' | 
+08:18:06 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:18:06 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:18:06 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:18:06 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:18:06 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:18:06 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:19:27 | Info | 'Server Running at 8080' | 
+08:19:29 | Info | 'Server Running at 8080' | 
+08:19:35 | Info | 'Server Running at 8080' | 
+08:19:37 | Info | 'Server Running at 8080' | 
+08:19:38 | Info | 'Server Running at 8080' | 
+08:19:41 | Info | 'Server Running at 8080' | 
+08:19:45 | Info | 'Server Running at 8080' | 
+08:19:48 | Info | 'Server Running at 8080' | 
+08:19:50 | Info | 'Server Running at 8080' | 
+08:19:54 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:19:54 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:19:54 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:19:54 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:19:54 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:19:54 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:20:52 | Info | 'Server Running at 8080' | 
+08:21:32 | Info | 'Server Running at 8080' | 
+08:22:05 | Info | 'Server Running at 8080' | 
+08:22:09 | Info | 'Server Running at 8080' | 
+08:22:15 | Info | 'Server Running at 8080' | 
+08:22:16 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:22:16 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:22:17 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:22:17 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:22:17 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:22:17 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:22:57 | Info | 'Server Running at 8080' | 
+08:22:59 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:22:59 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:22:59 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:22:59 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:22:59 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:22:59 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:23:39 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:23:39 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:23:39 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:23:39 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:23:39 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:23:39 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:24:00 | Info | 'Server Running at 8080' | 
+08:24:01 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:24:01 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:24:01 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:24:01 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:24:01 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:24:01 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:24:37 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:24:37 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:24:37 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:24:37 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:24:37 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:24:37 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:24:55 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:24:55 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:24:55 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:24:55 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:24:55 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:24:55 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:25:06 | Info | 'Server Running at 8080' | 
+08:25:10 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:25:10 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:25:11 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:25:11 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:25:11 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:25:11 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:25:27 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:25:27 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:25:27 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:25:27 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:25:27 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:25:27 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:25:39 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+08:25:39 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:25:39 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:25:55 | Info | '[CASE CONTROLLER] - Requested method to create case - Passing through the Case Service' | 
+08:25:55 | Info | '[CASE SERVICE] - Received request to create case with title: Rilievo Prova - Analyst: Jacopo Faul' | 
+08:25:55 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:25:55 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: 5233c302-9440-4e9f-8913-ebae419630fe' | 
+08:25:55 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:25:55 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:25:55 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:25:55 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:26:03 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+08:26:04 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:26:04 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:26:12 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:26:12 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: 5233c302-9440-4e9f-8913-ebae419630fe' | 
+08:26:12 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:26:12 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:26:12 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:26:12 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:26:17 | Info | '[COORDINATE ROUTER] - Requested route "/import" to import coordinates from Excel file' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:14 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:27:14 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:27:19 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:27:19 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: 5233c302-9440-4e9f-8913-ebae419630fe' | 
+08:27:19 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:27:19 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:27:19 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:27:19 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:28:02 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+08:28:02 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:28:02 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:29:08 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:29:08 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:29:09 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:29:09 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:29:09 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:29:09 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:33:58 | Info | 'Server Running at 8080' | 
+08:34:03 | Info | 'Server Running at 8080' | 
+08:34:05 | Info | 'Server Running at 8080' | 
+08:34:07 | Info | 'Server Running at 8080' | 
+08:34:10 | Info | 'Server Running at 8080' | 
+08:34:11 | Info | 'Server Running at 8080' | 
+08:34:17 | Info | 'Server Running at 8080' | 
+08:34:18 | Info | 'Server Running at 8080' | 
+08:34:22 | Info | 'Server Running at 8080' | 
+08:34:41 | Info | 'Server Running at 8080' | 
+08:34:50 | Info | 'Server Running at 8080' | 
+08:34:55 | Info | 'Server Running at 8080' | 
+08:36:59 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:36:59 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:42:28 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:42:28 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:42:28 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:42:28 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:42:28 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:42:28 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:42:44 | Info | 'Server Running at 8080' | 
+08:43:47 | Info | 'Server Running at 8080' | 
+08:43:51 | Info | 'Server Running at 8080' | 
+08:44:01 | Info | 'Server Running at 8080' | 
+08:44:02 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:44:02 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:44:03 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:44:03 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:44:03 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+08:44:03 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:44:08 | Info | '[COORDINATE ROUTER] - Requested route "/import" to import coordinates from Excel file' | 
+08:44:31 | Info | '[COORDINATE ROUTER] - Requested route "/import" to import coordinates from Excel file' | 
+08:45:39 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:45:39 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:58 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:58 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:45:59 | Info | '[COORDINATE CONTROLLER] - Requested method to create coordinate - Passing through the Coordinate Service' | 
+08:45:59 | Info | '[COORDINATE SERVICE] - Requested method to create Multiple Coordinates' | 
+08:46:33 | Info | 'Server Running at 8080' | 
+08:46:42 | Info | 'Server Running at 8080' | 
+08:46:49 | Info | 'Server Running at 8080' | 
+08:46:52 | Info | 'Server Running at 8080' | 
+08:48:04 | Info | 'Server Running at 8080' | 
+08:48:05 | Info | 'Server Running at 8080' | 
+08:48:10 | Info | 'Server Running at 8080' | 
+08:48:26 | Info | 'Server Running at 8080' | 
+08:48:29 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+08:48:29 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+08:48:29 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+08:48:29 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+08:48:29 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+08:48:29 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:07:07 | Info | 'Server Running at 8080' | 
+09:07:10 | Info | 'Server Running at 8080' | 
+09:07:14 | Info | 'Server Running at 8080' | 
+09:07:17 | Info | 'Server Running at 8080' | 
+09:07:19 | Info | 'Server Running at 8080' | 
+09:07:21 | Info | 'Server Running at 8080' | 
+09:07:23 | Info | 'Server Running at 8080' | 
+09:07:25 | Info | 'Server Running at 8080' | 
+09:07:34 | Info | 'Server Running at 8080' | 
+09:07:36 | Info | 'Server Running at 8080' | 
+09:07:38 | Info | 'Server Running at 8080' | 
+09:07:39 | Info | 'Server Running at 8080' | 
+09:07:40 | Info | 'Server Running at 8080' | 
+09:07:52 | Info | 'Server Running at 8080' | 
+09:08:08 | Info | 'Server Running at 8080' | 
+09:08:25 | Info | 'Server Running at 8080' | 
+09:08:35 | Info | 'Server Running at 8080' | 
+09:08:38 | Info | 'Server Running at 8080' | 
+09:08:43 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:08:43 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:08:43 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+09:08:43 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+09:08:43 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:08:43 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+09:09:24 | Error | '[COORDINATE CONTROLLER] - Error while exporting file KML: ReferenceError: hex is not defined' | 
+09:11:06 | Error | '[COORDINATE CONTROLLER] - Error while exporting file KML: ReferenceError: hex is not defined' | 
+09:11:07 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:11:07 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:11:07 | Error | '[COORDINATE CONTROLLER] - Error while exporting file KML: ReferenceError: hex is not defined' | 
+09:12:06 | Info | 'Server Running at 8080' | 
+09:12:07 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:12:07 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:12:07 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+09:12:07 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+09:12:07 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:12:07 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+09:14:38 | Info | 'Server Running at 8080' | 
+09:16:29 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:16:29 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:16:30 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+09:16:30 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+09:16:30 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:16:30 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+09:18:30 | Error | 'An error occured => PayloadTooLargeError: request entity too large' | 
+09:18:35 | Error | 'An error occured => PayloadTooLargeError: request entity too large' | 
+09:18:44 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:18:44 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:38:22 | Info | 'Server Running at 8080' | 
+09:38:27 | Info | 'Server Running at 8080' | 
+09:39:07 | Info | 'Server Running at 8080' | 
+09:39:11 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:39:11 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:39:11 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+09:39:11 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+09:39:11 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:39:11 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+09:40:07 | Error | 'An error occured => PayloadTooLargeError: request entity too large' | 
+09:49:40 | Info | 'Server Running at 8080' | 
+09:49:42 | Info | 'Server Running at 8080' | 
+09:49:45 | Info | 'Server Running at 8080' | 
+09:49:49 | Info | 'Server Running at 8080' | 
+09:49:54 | Info | 'Server Running at 8080' | 
+09:49:58 | Info | 'Server Running at 8080' | 
+09:50:00 | Info | 'Server Running at 8080' | 
+09:50:12 | Info | 'Server Running at 8080' | 
+09:50:16 | Info | 'Server Running at 8080' | 
+09:50:21 | Info | 'Server Running at 8080' | 
+09:50:26 | Info | 'Server Running at 8080' | 
+09:51:15 | Info | 'Server Running at 8080' | 
+09:51:25 | Info | 'Server Running at 8080' | 
+09:51:37 | Info | 'Server Running at 8080' | 
+09:51:40 | Info | 'Server Running at 8080' | 
+09:51:43 | Info | 'Server Running at 8080' | 
+09:51:48 | Info | 'Server Running at 8080' | 
+09:51:50 | Info | 'Server Running at 8080' | 
+09:51:51 | Info | 'Server Running at 8080' | 
+09:52:11 | Info | 'Server Running at 8080' | 
+09:52:34 | Info | 'Server Running at 8080' | 
+09:52:45 | Info | 'Server Running at 8080' | 
+09:53:44 | Info | 'Server Running at 8080' | 
+09:53:45 | Info | 'Server Running at 8080' | 
+09:53:48 | Info | 'Server Running at 8080' | 
+09:54:06 | Info | 'Server Running at 8080' | 
+09:54:26 | Info | 'Server Running at 8080' | 
+09:54:41 | Info | 'Server Running at 8080' | 
+09:54:47 | Info | 'Server Running at 8080' | 
+09:54:49 | Info | 'Server Running at 8080' | 
+09:54:54 | Info | 'Server Running at 8080' | 
+09:54:57 | Info | 'Server Running at 8080' | 
+09:54:58 | Info | 'Server Running at 8080' | 
+09:55:02 | Info | 'Server Running at 8080' | 
+09:55:09 | Info | 'Server Running at 8080' | 
+09:55:14 | Info | 'Server Running at 8080' | 
+09:55:16 | Info | 'Server Running at 8080' | 
+09:55:19 | Info | 'Server Running at 8080' | 
+09:55:29 | Info | 'Server Running at 8080' | 
+09:55:41 | Info | 'Server Running at 8080' | 
+09:55:47 | Info | 'Server Running at 8080' | 
+09:55:59 | Info | 'Server Running at 8080' | 
+09:56:20 | Info | 'Server Running at 8080' | 
+09:56:33 | Info | 'Server Running at 8080' | 
+09:56:37 | Info | 'Server Running at 8080' | 
+09:56:54 | Info | 'Server Running at 8080' | 
+09:57:10 | Info | 'Server Running at 8080' | 
+09:57:24 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:57:24 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:57:24 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+09:57:24 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+09:57:24 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:57:24 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+09:57:39 | Info | 'Server Running at 8080' | 
+09:57:41 | Info | 'Server Running at 8080' | 
+09:57:43 | Info | 'Server Running at 8080' | 
+09:57:44 | Info | 'Server Running at 8080' | 
+09:57:45 | Info | 'Server Running at 8080' | 
+09:57:48 | Info | 'Server Running at 8080' | 
+09:58:18 | Info | 'Server Running at 8080' | 
+09:58:21 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:58:21 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+09:58:21 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+09:58:21 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+09:58:21 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+09:58:21 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+09:59:57 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+09:59:57 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+10:08:37 | Info | 'Server Running at 8080' | 
+10:08:39 | Info | 'Server Running at 8080' | 
+10:08:57 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+10:08:57 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+10:08:57 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:08:57 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:08:57 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+10:08:57 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+10:10:14 | Info | 'Server Running at 8080' | 
+10:10:17 | Info | 'Server Running at 8080' | 
+10:10:17 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+10:10:17 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+10:10:17 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:10:17 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:10:17 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+10:10:17 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+10:11:00 | Info | 'Server Running at 8080' | 
+10:11:05 | Info | 'Server Running at 8080' | 
+10:11:05 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+10:11:05 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+10:11:06 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:11:06 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:11:06 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+10:11:06 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+10:12:32 | Info | 'Server Running at 8080' | 
+10:12:37 | Info | 'Server Running at 8080' | 
+10:12:38 | Info | 'Server Running at 8080' | 
+10:12:40 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+10:12:40 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+10:12:41 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:12:41 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:12:41 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+10:12:41 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+10:13:22 | Info | 'Server Running at 8080' | 
+10:13:22 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+10:13:22 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+10:13:23 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:13:23 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:13:23 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+10:13:23 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+10:23:41 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+10:23:41 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:23:41 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:23:44 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+10:23:44 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: 5233c302-9440-4e9f-8913-ebae419630fe' | 
+10:23:44 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+10:23:44 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+10:23:44 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+10:23:44 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+10:24:01 | Info | '[COORDINATE ROUTER] - Requested route "/import" to import coordinates from Excel file' | 
+11:33:18 | Info | 'Server Running at 8080' | 
+11:33:19 | Info | 'Server Running at 8080' | 
+12:46:06 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:46:06 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+12:46:06 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+12:46:08 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+12:46:08 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+12:46:08 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+12:46:08 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+12:46:08 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+12:46:08 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+12:58:42 | Info | 'Server Running at 8080' | 
+12:58:48 | Info | 'Server Running at 8080' | 
+12:58:52 | Info | 'Server Running at 8080' | 
+12:58:58 | Info | 'Server Running at 8080' | 
+12:59:00 | Info | 'Server Running at 8080' | 
+12:59:08 | Info | 'Server Running at 8080' | 
+12:59:15 | Info | 'Server Running at 8080' | 
+12:59:22 | Info | 'Server Running at 8080' | 
+12:59:26 | Info | 'Server Running at 8080' | 
+12:59:32 | Info | 'Server Running at 8080' | 
+12:59:38 | Info | 'Server Running at 8080' | 
+12:59:41 | Info | 'Server Running at 8080' | 
+12:59:55 | Info | 'Server Running at 8080' | 
+12:59:58 | Info | 'Server Running at 8080' | 
+01:00:09 | Info | 'Server Running at 8080' | 
+01:00:13 | Info | 'Server Running at 8080' | 
+01:00:16 | Info | 'Server Running at 8080' | 
+01:00:18 | Info | 'Server Running at 8080' | 
+01:00:23 | Info | 'Server Running at 8080' | 
+01:00:26 | Info | 'Server Running at 8080' | 
+01:00:31 | Info | 'Server Running at 8080' | 
+01:00:34 | Info | 'Server Running at 8080' | 
+01:00:36 | Info | 'Server Running at 8080' | 
+01:00:40 | Info | 'Server Running at 8080' | 
+01:00:45 | Info | 'Server Running at 8080' | 
+01:02:16 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:02:16 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:05:33 | Info | 'Server Running at 8080' | 
+01:05:35 | Info | 'Server Running at 8080' | 
+01:05:38 | Info | 'Server Running at 8080' | 
+01:06:28 | Info | 'Server Running at 8080' | 
+01:06:32 | Info | 'Server Running at 8080' | 
+01:06:35 | Info | 'Server Running at 8080' | 
+01:06:37 | Info | 'Server Running at 8080' | 
+01:06:48 | Info | 'Server Running at 8080' | 
+01:06:57 | Info | 'Server Running at 8080' | 
+01:07:03 | Info | 'Server Running at 8080' | 
+01:07:09 | Info | 'Server Running at 8080' | 
+01:07:20 | Info | 'Server Running at 8080' | 
+01:07:25 | Info | 'Server Running at 8080' | 
+01:07:39 | Info | 'Server Running at 8080' | 
+01:07:42 | Info | 'Server Running at 8080' | 
+01:07:56 | Info | 'Server Running at 8080' | 
+01:07:58 | Info | 'Server Running at 8080' | 
+01:08:02 | Info | 'Server Running at 8080' | 
+01:08:03 | Info | 'Server Running at 8080' | 
+01:08:13 | Info | 'Server Running at 8080' | 
+01:08:17 | Info | 'Server Running at 8080' | 
+01:08:19 | Info | 'Server Running at 8080' | 
+01:08:33 | Info | 'Server Running at 8080' | 
+01:09:14 | Info | 'Server Running at 8080' | 
+01:09:20 | Info | 'Server Running at 8080' | 
+01:09:22 | Info | 'Server Running at 8080' | 
+01:09:24 | Info | 'Server Running at 8080' | 
+01:09:27 | Info | 'Server Running at 8080' | 
+01:09:31 | Info | 'Server Running at 8080' | 
+01:09:35 | Info | 'Server Running at 8080' | 
+01:09:41 | Info | 'Server Running at 8080' | 
+01:09:43 | Info | 'Server Running at 8080' | 
+01:10:13 | Info | 'Server Running at 8080' | 
+01:10:17 | Info | 'Server Running at 8080' | 
+01:10:19 | Info | 'Server Running at 8080' | 
+01:10:26 | Info | 'Server Running at 8080' | 
+01:10:28 | Info | 'Server Running at 8080' | 
+01:10:49 | Info | 'Server Running at 8080' | 
+01:10:50 | Info | 'Server Running at 8080' | 
+01:10:53 | Info | 'Server Running at 8080' | 
+01:10:57 | Info | 'Server Running at 8080' | 
+01:11:02 | Info | 'Server Running at 8080' | 
+01:11:10 | Info | 'Server Running at 8080' | 
+01:11:13 | Info | 'Server Running at 8080' | 
+01:11:18 | Info | 'Server Running at 8080' | 
+01:17:26 | Info | 'Server Running at 8080' | 
+01:17:31 | Info | 'Server Running at 8080' | 
+01:17:42 | Info | 'Server Running at 8080' | 
+01:17:44 | Info | 'Server Running at 8080' | 
+01:17:47 | Info | 'Server Running at 8080' | 
+01:17:51 | Info | 'Server Running at 8080' | 
+01:17:53 | Info | 'Server Running at 8080' | 
+01:17:56 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:17:56 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:17:56 | Info | 'Server Running at 8080' | 
+01:17:56 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:17:56 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:17:56 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:17:56 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:18:18 | Info | 'Server Running at 8080' | 
+01:18:21 | Info | 'Server Running at 8080' | 
+01:18:26 | Info | 'Server Running at 8080' | 
+01:18:29 | Info | 'Server Running at 8080' | 
+01:18:30 | Info | 'Server Running at 8080' | 
+01:18:32 | Info | 'Server Running at 8080' | 
+01:18:37 | Info | 'Server Running at 8080' | 
+01:18:40 | Info | 'Server Running at 8080' | 
+01:18:46 | Info | 'Server Running at 8080' | 
+01:18:51 | Info | 'Server Running at 8080' | 
+01:18:57 | Info | 'Server Running at 8080' | 
+01:19:02 | Info | 'Server Running at 8080' | 
+01:19:07 | Info | 'Server Running at 8080' | 
+01:19:08 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:19:08 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:19:08 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:19:08 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:19:08 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:19:08 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:19:36 | Info | 'Server Running at 8080' | 
+01:19:46 | Info | 'Server Running at 8080' | 
+01:19:49 | Info | 'Server Running at 8080' | 
+01:19:54 | Info | 'Server Running at 8080' | 
+01:20:00 | Info | 'Server Running at 8080' | 
+01:20:01 | Info | 'Server Running at 8080' | 
+01:20:06 | Info | 'Server Running at 8080' | 
+01:20:11 | Info | 'Server Running at 8080' | 
+01:20:19 | Info | 'Server Running at 8080' | 
+01:20:22 | Info | 'Server Running at 8080' | 
+01:20:23 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:20:23 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:20:24 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:20:24 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:20:24 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:20:24 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:20:45 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:20:45 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:21:03 | Info | 'Server Running at 8080' | 
+01:21:08 | Info | 'Server Running at 8080' | 
+01:21:13 | Info | 'Server Running at 8080' | 
+01:21:15 | Info | 'Server Running at 8080' | 
+01:21:27 | Info | 'Server Running at 8080' | 
+01:21:30 | Info | 'Server Running at 8080' | 
+01:21:40 | Info | 'Server Running at 8080' | 
+01:21:45 | Info | 'Server Running at 8080' | 
+01:21:53 | Info | 'Server Running at 8080' | 
+01:21:59 | Info | 'Server Running at 8080' | 
+01:21:59 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:21:59 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:22:00 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:22:00 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:22:00 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:22:00 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:23:31 | Info | 'Server Running at 8080' | 
+01:23:31 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:23:31 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:23:32 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:23:32 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:23:32 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:23:32 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:23:52 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:23:52 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:23:52 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:23:52 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:23:52 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:23:52 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:24:43 | Info | 'Server Running at 8080' | 
+01:24:46 | Info | 'Server Running at 8080' | 
+01:24:46 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:24:46 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:24:47 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:24:47 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:24:47 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:24:47 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:25:45 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:25:45 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:25:45 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:25:45 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:25:45 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:25:45 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:30:10 | Info | 'Server Running at 8080' | 
+01:30:59 | Info | 'Server Running at 8080' | 
+01:31:16 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:33:55 | Info | 'Server Running at 8080' | 
+01:33:58 | Info | 'Server Running at 8080' | 
+01:36:13 | Info | 'Server Running at 8080' | 
+01:36:35 | Info | 'Server Running at 8081' | 
+01:36:50 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:38:21 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:38:55 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:38:55 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:38:56 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:38:56 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:38:56 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:38:56 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:39:42 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+01:39:42 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+01:39:58 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+01:39:58 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+01:41:54 | Info | 'Server Running at 8080' | 
+01:41:56 | Info | 'Server Running at 8080' | 
+01:42:00 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:42:00 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:42:01 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:42:01 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:42:01 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:42:01 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:42:16 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+01:42:16 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+01:48:02 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:48:02 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:48:03 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:48:03 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:48:03 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+01:48:03 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:57:47 | Info | 'Server Running at 8080' | 
+01:58:04 | Info | 'Server Running at 8080' | 
+01:58:56 | Info | 'Server Running at 8080' | 
+01:59:01 | Info | 'Server Running at 8080' | 
+01:59:10 | Info | 'Server Running at 8080' | 
+01:59:13 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:59:13 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:59:13 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:59:15 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+01:59:15 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+01:59:16 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+01:59:16 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+01:59:16 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+01:59:16 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+02:03:33 | Info | 'Server Running at 8080' | 
+02:04:38 | Info | 'Server Running at 8080' | 
+02:05:01 | Info | 'Server Running at 8080' | 
+02:05:07 | Info | 'Server Running at 8080' | 
+02:05:10 | Info | 'Server Running at 8080' | 
+02:05:11 | Info | 'Server Running at 8080' | 
+02:05:13 | Info | 'Server Running at 8080' | 
+02:05:20 | Info | 'Server Running at 8080' | 
+02:05:22 | Info | 'Server Running at 8080' | 
+02:05:25 | Info | 'Server Running at 8080' | 
+02:05:28 | Info | 'Server Running at 8080' | 
+02:05:30 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+02:05:30 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+02:05:31 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+02:05:31 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+02:05:31 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+02:05:31 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+02:06:46 | Info | 'Server Running at 8080' | 
+02:06:47 | Info | 'Server Running at 8080' | 
+02:06:50 | Info | 'Server Running at 8080' | 
+02:06:52 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+02:06:52 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+02:06:52 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+02:06:52 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+02:06:52 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+02:06:52 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+02:08:55 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+02:08:55 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+02:08:56 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+02:08:56 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+02:08:56 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+02:08:56 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+02:10:23 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+02:10:23 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+02:10:38 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+02:10:38 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+02:10:58 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+02:10:58 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+02:11:12 | Info | '[COORDINATE CONTROLLER] - Requested color update by cell ID - Passing through the Coordinate Service' | 
+02:11:12 | Info | '[COORDINATE SERVICE] - Requested method to update color by cell ID' | 
+04:03:47 | Info | 'Server Running at 8080' | 
+04:03:50 | Info | 'Server Running at 8080' | 
+04:03:56 | Info | 'Server Running at 8080' | 
+04:04:57 | Info | 'Server Running at 8080' | 
+04:06:35 | Info | 'Server Running at 8080' | 
+04:06:37 | Info | 'Server Running at 8080' | 
+04:06:42 | Info | 'Server Running at 8080' | 
+04:06:44 | Info | 'Server Running at 8080' | 
+04:06:49 | Info | 'Server Running at 8080' | 
+04:07:13 | Info | 'Server Running at 8080' | 
+04:07:23 | Info | 'Server Running at 8080' | 
+04:07:35 | Info | 'Server Running at 8080' | 
+04:07:50 | Info | 'Server Running at 8080' | 
+04:07:51 | Info | 'Server Running at 8080' | 
+04:07:56 | Info | 'Server Running at 8080' | 
+04:08:05 | Info | 'Server Running at 8080' | 
+04:08:13 | Info | 'Server Running at 8080' | 
+04:08:19 | Info | 'Server Running at 8080' | 
+04:08:33 | Info | 'Server Running at 8080' | 
+04:08:36 | Info | 'Server Running at 8080' | 
+04:08:40 | Info | 'Server Running at 8080' | 
+04:09:17 | Info | 'Server Running at 8080' | 
+04:09:19 | Info | 'Server Running at 8080' | 
+04:09:20 | Info | 'Server Running at 8080' | 
+04:11:02 | Info | 'Server Running at 8080' | 
+04:11:39 | Info | 'Server Running at 8080' | 
+04:12:08 | Info | 'Server Running at 8080' | 
+04:12:14 | Info | 'Server Running at 8080' | 
+04:12:16 | Info | 'Server Running at 8080' | 
+04:12:18 | Info | 'Server Running at 8080' | 
+04:12:20 | Info | 'Server Running at 8080' | 
+04:12:32 | Info | 'Server Running at 8080' | 
+04:12:33 | Info | 'Server Running at 8080' | 
+04:12:38 | Info | 'Server Running at 8080' | 
+04:12:40 | Info | 'Server Running at 8080' | 
+04:12:50 | Info | 'Server Running at 8080' | 
+04:12:52 | Info | 'Server Running at 8080' | 
+04:12:59 | Info | 'Server Running at 8080' | 
+04:13:05 | Info | 'Server Running at 8080' | 
+04:13:20 | Info | 'Server Running at 8080' | 
+04:13:22 | Info | 'Server Running at 8080' | 
+04:13:29 | Info | 'Server Running at 8080' | 
+04:13:32 | Info | 'Server Running at 8080' | 
+04:14:22 | Info | 'Server Running at 8080' | 
+04:14:23 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+04:14:23 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+04:14:23 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+04:14:23 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+04:14:23 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+04:14:23 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+04:21:48 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+04:21:48 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+04:21:48 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+04:21:48 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+04:21:48 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+04:21:48 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+04:21:56 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+04:21:56 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+04:21:57 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+04:21:57 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+04:21:57 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+04:21:57 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+04:21:58 | Info | 'Server Running at 8080' | 
+04:21:58 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+04:21:58 | Error | '[COORDINATE CONTROLLER] - Error while getting the coordinates: TypeError: Cannot read properties of undefined (reading \'id\')' | 
+04:23:04 | Info | 'Server Running at 8080' | 
+04:23:23 | Info | '[CASE ROUTER] - Requested route "/:url"' | 
+04:23:23 | Info | '[CASE SERVICE] - Received request to get the case from the database with URL: a3d6919b-f52f-48e6-a00c-c9f28d324aff' | 
+04:23:24 | Info | '[CASE CONTROLLER] - Requested method to get cases - Passing through the Case Service' | 
+04:23:24 | Info | '[CASE SERVICE] - Received request to get all the cases in the database' | 
+04:23:24 | Info | '[COORDINATE CONTROLLER] - Requested method to get coordinate by selected case - Passing through the Coordinate Service' | 
+04:23:24 | Info | '[COORDINATE SERVICE] - Requested method to get coordinates by case id' | 
+04:23:43 | Info | 'Server Running at 8080' | 
+04:24:29 | Info | 'Server Running at 8080' | 
+04:24:43 | Info | 'Server Running at 8080' | 
+04:24:47 | Info | 'Server Running at 8080' | 
+04:24:52 | Info | 'Server Running at 8080' | 
+04:25:05 | Info | 'Server Running at 8080' | 

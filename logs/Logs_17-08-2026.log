@@ -1,0 +1,735 @@
+11:07:00 | Info | 'Database db_coordinates created (was missing).' | 
+11:07:00 | Info | 'Server Running at 8080' | 
+11:07:03 | Info | 'Server Running at 8080' | 
+11:07:10 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:07:43 | Info | 'Server Running at 8080' | 
+11:07:44 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:08:05 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:08:25 | Info | 'Server Running at 8080' | 
+11:08:27 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:09:00 | Info | 'Server Running at 8080' | 
+11:09:02 | Info | 'Server Running at 8080' | 
+11:09:57 | Info | 'Server Running at 8080' | 
+11:10:03 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:13:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:13:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:27 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:40 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:44 | Info | 'Server Running at 8080' | 
+11:14:47 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:47 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:48 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:48 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:48 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:48 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:49 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:49 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:50 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:50 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:50 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:14:52 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:15:20 | Info | 'Server Running at 8080' | 
+11:15:22 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:15:23 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:15:24 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:05 | Info | 'Server Running at 8080' | 
+11:19:08 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:11 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:16 | Info | 'Server Running at 8080' | 
+11:19:16 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:16 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:17 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:17 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:19:37 | Info | 'Server Running at 8080' | 
+11:19:39 | Info | 'Server Running at 8080' | 
+11:19:43 | Info | 'Server Running at 8080' | 
+11:19:44 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:20:58 | Info | 'Server Running at 8080' | 
+11:21:00 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:21:02 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:24:12 | Info | 'Server Running at 8080' | 
+11:24:19 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:24:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:27:58 | Info | 'Server Running at 8080' | 
+11:28:30 | Info | 'Server Running at 8080' | 
+11:28:32 | Info | 'Server Running at 8080' | 
+11:28:33 | Info | 'Server Running at 8080' | 
+11:28:37 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:28:38 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:28:38 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:28:48 | Info | 'Server Running at 8080' | 
+11:28:51 | Info | 'Server Running at 8080' | 
+11:29:02 | Info | 'Server Running at 8080' | 
+11:30:10 | Info | 'Server Running at 8080' | 
+11:30:18 | Info | 'Server Running at 8080' | 
+11:30:23 | Info | 'Server Running at 8080' | 
+11:30:30 | Info | 'Server Running at 8080' | 
+11:30:34 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:30:35 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:14 | Info | 'Server Running at 8080' | 
+11:31:15 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:29 | Info | 'Server Running at 8080' | 
+11:31:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:32 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:32 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:31:33 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:32:52 | Info | 'Server Running at 8080' | 
+11:33:02 | Info | 'Server Running at 8080' | 
+11:33:07 | Info | 'Server Running at 8080' | 
+11:33:27 | Info | 'Server Running at 8080' | 
+11:33:28 | Info | 'Server Running at 8080' | 
+11:33:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:33:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:33:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:33:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:33:32 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:33:32 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:33:39 | Info | 'Server Running at 8080' | 
+11:33:40 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:34:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:34:31 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:35:56 | Info | 'Server Running at 8080' | 
+11:35:59 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:36:01 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:36:26 | Info | 'Server Running at 8080' | 
+11:36:27 | Info | 'Server Running at 8080' | 
+11:36:31 | Info | 'Server Running at 8080' | 
+11:36:33 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:37:45 | Info | 'Server Running at 8080' | 
+11:39:01 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:14 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:32 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:36 | Info | 'Server Running at 8080' | 
+11:40:36 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:37 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:37 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:37 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:38 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:56 | Info | 'Server Running at 8080' | 
+11:40:56 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:40:56 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:41:46 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:42:05 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:43:04 | Info | 'Server Running at 8080' | 
+11:43:28 | Info | 'Server Running at 8080' | 
+11:43:29 | Info | 'Server Running at 8080' | 
+11:43:31 | Info | 'Server Running at 8080' | 
+11:43:37 | Info | 'Server Running at 8080' | 
+11:43:42 | Info | 'Server Running at 8080' | 
+11:43:44 | Info | 'Server Running at 8080' | 
+11:43:49 | Info | 'Server Running at 8080' | 
+11:43:53 | Info | 'Server Running at 8080' | 
+11:43:55 | Info | 'Server Running at 8080' | 
+11:44:03 | Info | 'Server Running at 8080' | 
+11:44:09 | Info | 'Server Running at 8080' | 
+11:44:18 | Info | 'Server Running at 8080' | 
+11:44:19 | Info | 'Server Running at 8080' | 
+11:44:26 | Info | 'Server Running at 8080' | 
+11:44:30 | Info | 'Server Running at 8080' | 
+11:44:37 | Info | 'Server Running at 8080' | 
+11:44:40 | Info | 'Server Running at 8080' | 
+11:44:43 | Info | 'Server Running at 8080' | 
+11:44:45 | Info | 'Server Running at 8080' | 
+11:44:55 | Info | 'Server Running at 8080' | 
+11:45:04 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:45:05 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+11:45:11 | Info | 'Server Running at 8080' | 
+11:45:12 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:43:27 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:44:08 | Info | 'Server Running at 8080' | 
+12:44:09 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:44:52 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:45:36 | Info | 'Server Running at 8080' | 
+12:45:38 | Info | 'Server Running at 8080' | 
+12:45:39 | Info | 'Server Running at 8080' | 
+12:45:40 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:45:58 | Info | 'Server Running at 8080' | 
+12:45:59 | Info | 'Server Running at 8080' | 
+12:46:02 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:46:48 | Info | 'Server Running at 8080' | 
+12:46:59 | Info | 'Server Running at 8080' | 
+12:47:03 | Info | 'Server Running at 8080' | 
+12:47:10 | Info | 'Server Running at 8080' | 
+12:48:17 | Info | 'Server Running at 8080' | 
+12:48:18 | Info | 'Server Running at 8080' | 
+12:48:30 | Info | 'Server Running at 8080' | 
+12:48:31 | Info | 'Server Running at 8080' | 
+12:48:35 | Info | 'Server Running at 8080' | 
+12:48:38 | Info | 'Server Running at 8080' | 
+12:48:40 | Info | 'Server Running at 8080' | 
+12:48:42 | Info | 'Server Running at 8080' | 
+12:48:47 | Info | 'Server Running at 8080' | 
+12:48:52 | Info | 'Server Running at 8080' | 
+12:48:55 | Info | 'Server Running at 8080' | 
+12:48:59 | Info | 'Server Running at 8080' | 
+12:49:02 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:49:19 | Info | 'Server Running at 8080' | 
+12:49:20 | Info | 'Server Running at 8080' | 
+12:49:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:49:28 | Info | 'Server Running at 8080' | 
+12:49:30 | Info | 'Server Running at 8080' | 
+12:49:30 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:49:44 | Info | 'Server Running at 8080' | 
+12:49:52 | Info | 'Server Running at 8080' | 
+12:49:53 | Info | 'Server Running at 8080' | 
+12:49:54 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:50:11 | Info | 'Server Running at 8080' | 
+12:50:14 | Info | 'Server Running at 8080' | 
+12:50:15 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:50:15 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:51:07 | Info | 'Server Running at 8080' | 
+12:51:07 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:52:53 | Info | 'Server Running at 8080' | 
+12:52:55 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+12:53:38 | Info | 'Server Running at 8080' | 
+12:53:39 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:15:22 | Info | 'Server Running at 8080' | 
+01:15:27 | Info | 'Server Running at 8080' | 
+01:15:34 | Info | 'Server Running at 8080' | 
+01:15:37 | Info | 'Server Running at 8080' | 
+01:15:42 | Info | 'Server Running at 8080' | 
+01:15:46 | Info | 'Server Running at 8080' | 
+01:15:49 | Info | 'Server Running at 8080' | 
+01:15:50 | Info | 'Server Running at 8080' | 
+01:15:54 | Info | 'Server Running at 8080' | 
+01:15:58 | Info | 'Server Running at 8080' | 
+01:16:08 | Info | 'Server Running at 8080' | 
+01:16:10 | Info | 'Server Running at 8080' | 
+01:16:13 | Info | 'Server Running at 8080' | 
+01:16:14 | Info | 'Server Running at 8080' | 
+01:16:16 | Info | 'Server Running at 8080' | 
+01:16:23 | Info | 'Server Running at 8080' | 
+01:16:26 | Info | 'Server Running at 8080' | 
+01:16:30 | Info | 'Server Running at 8080' | 
+01:16:33 | Info | 'Server Running at 8080' | 
+01:16:37 | Info | 'Server Running at 8080' | 
+01:16:39 | Info | 'Server Running at 8080' | 
+01:16:41 | Info | 'Server Running at 8080' | 
+01:16:43 | Info | 'Server Running at 8080' | 
+01:16:47 | Info | 'Server Running at 8080' | 
+01:16:51 | Info | 'Server Running at 8080' | 
+01:16:53 | Info | 'Server Running at 8080' | 
+01:16:55 | Info | 'Server Running at 8080' | 
+01:16:58 | Info | 'Server Running at 8080' | 
+01:17:03 | Info | 'Server Running at 8080' | 
+01:17:05 | Info | 'Server Running at 8080' | 
+01:17:08 | Info | 'Server Running at 8080' | 
+01:17:11 | Info | 'Server Running at 8080' | 
+01:17:13 | Info | 'Server Running at 8080' | 
+01:24:12 | Info | 'Server Running at 8080' | 
+01:24:16 | Info | 'Server Running at 8080' | 
+01:24:19 | Info | 'Server Running at 8080' | 
+01:24:21 | Info | 'Server Running at 8080' | 
+01:24:24 | Info | 'Server Running at 8080' | 
+01:24:31 | Info | 'Server Running at 8080' | 
+01:24:35 | Info | 'Server Running at 8080' | 
+01:24:39 | Info | 'Server Running at 8080' | 
+01:24:43 | Info | 'Server Running at 8080' | 
+01:24:44 | Info | 'Server Running at 8080' | 
+01:24:50 | Info | 'Server Running at 8080' | 
+01:24:54 | Info | 'Server Running at 8080' | 
+01:24:57 | Info | 'Server Running at 8080' | 
+01:24:59 | Info | 'Server Running at 8080' | 
+01:25:06 | Info | 'Server Running at 8080' | 
+01:25:32 | Info | 'Server Running at 8080' | 
+01:25:50 | Info | 'Server Running at 8080' | 
+01:25:52 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:26:06 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:27:09 | Info | 'Server Running at 8080' | 
+01:27:11 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:27:31 | Info | 'Server Running at 8080' | 
+01:27:36 | Info | 'Server Running at 8080' | 
+01:27:39 | Info | 'Server Running at 8080' | 
+01:27:48 | Info | 'Server Running at 8080' | 
+01:27:52 | Info | 'Server Running at 8080' | 
+01:27:54 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:28:10 | Info | 'Server Running at 8080' | 
+01:28:11 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+01:51:22 | Info | 'Server Running at 8080' | 
+01:52:59 | Info | 'Server Running at 8080' | 
+01:53:13 | Info | 'Server Running at 8080' | 
+01:53:26 | Info | 'Server Running at 8080' | 
+01:53:31 | Info | 'Server Running at 8080' | 
+01:53:34 | Info | 'Server Running at 8080' | 
+01:53:36 | Info | 'Server Running at 8080' | 
+01:53:45 | Info | 'Server Running at 8080' | 
+01:54:01 | Info | 'Server Running at 8080' | 
+01:54:07 | Info | 'Server Running at 8080' | 
+01:54:11 | Info | 'Server Running at 8080' | 
+01:54:14 | Info | 'Server Running at 8080' | 
+01:54:17 | Info | 'Server Running at 8080' | 
+01:54:20 | Info | 'Server Running at 8080' | 
+01:54:26 | Info | 'Server Running at 8080' | 
+01:54:27 | Info | 'Server Running at 8080' | 
+01:54:31 | Info | 'Server Running at 8080' | 
+01:54:34 | Info | 'Server Running at 8080' | 
+01:54:40 | Info | 'Server Running at 8080' | 
+01:54:44 | Info | 'Server Running at 8080' | 
+01:54:46 | Info | 'Server Running at 8080' | 
+01:54:58 | Info | 'Server Running at 8080' | 
+01:55:02 | Info | 'Server Running at 8080' | 
+01:55:11 | Info | 'Server Running at 8080' | 
+01:55:12 | Info | 'Server Running at 8080' | 
+01:55:14 | Info | 'Server Running at 8080' | 
+01:55:17 | Info | 'Server Running at 8080' | 
+01:55:24 | Info | 'Server Running at 8080' | 
+01:55:33 | Info | 'Server Running at 8080' | 
+01:55:41 | Info | 'Server Running at 8080' | 
+01:55:44 | Info | 'Server Running at 8080' | 
+01:55:47 | Info | 'Server Running at 8080' | 
+01:55:51 | Info | 'Server Running at 8080' | 
+01:55:54 | Info | 'Server Running at 8080' | 
+01:55:57 | Info | 'Server Running at 8080' | 
+01:55:59 | Info | 'Server Running at 8080' | 
+01:56:28 | Info | 'Server Running at 8080' | 
+01:56:39 | Info | 'Server Running at 8080' | 
+01:56:45 | Info | 'Server Running at 8080' | 
+01:56:55 | Info | 'Server Running at 8080' | 
+01:57:01 | Info | 'Server Running at 8080' | 
+01:57:04 | Info | 'Server Running at 8080' | 
+01:57:09 | Info | 'Server Running at 8080' | 
+01:57:10 | Info | 'Server Running at 8080' | 
+01:57:21 | Info | 'Server Running at 8080' | 
+01:57:25 | Info | 'Server Running at 8080' | 
+01:57:40 | Info | 'Server Running at 8080' | 
+01:57:47 | Info | 'Server Running at 8080' | 
+01:58:14 | Info | 'Server Running at 8080' | 
+01:59:19 | Info | 'Server Running at 8080' | 
+01:59:25 | Info | 'Server Running at 8080' | 
+01:59:25 | Info | 'Server Running at 8080' | 
+01:59:33 | Info | 'Server Running at 8080' | 
+01:59:35 | Info | 'Server Running at 8080' | 
+01:59:37 | Info | 'Server Running at 8080' | 
+01:59:40 | Info | 'Server Running at 8080' | 
+01:59:43 | Info | 'Server Running at 8080' | 
+01:59:45 | Info | 'Server Running at 8080' | 
+01:59:53 | Info | 'Server Running at 8080' | 
+01:59:54 | Info | 'Server Running at 8080' | 
+01:59:57 | Info | 'Server Running at 8080' | 
+01:59:59 | Info | 'Server Running at 8080' | 
+02:00:03 | Info | 'Server Running at 8080' | 
+02:00:07 | Info | 'Server Running at 8080' | 
+02:00:32 | Info | 'Server Running at 8080' | 
+02:00:36 | Info | 'Server Running at 8080' | 
+02:00:43 | Info | 'Server Running at 8080' | 
+02:00:47 | Info | 'Server Running at 8080' | 
+02:00:52 | Info | 'Server Running at 8080' | 
+02:00:56 | Info | 'Server Running at 8080' | 
+02:00:58 | Info | 'Server Running at 8080' | 
+02:01:10 | Info | 'Server Running at 8080' | 
+02:01:14 | Info | 'Server Running at 8080' | 
+02:01:15 | Info | 'Server Running at 8080' | 
+02:01:21 | Info | 'Server Running at 8080' | 
+02:01:28 | Info | 'Server Running at 8080' | 
+02:01:30 | Info | 'Server Running at 8080' | 
+02:01:38 | Info | 'Server Running at 8080' | 
+02:01:43 | Info | 'Server Running at 8080' | 
+02:04:28 | Info | 'Server Running at 8080' | 
+02:06:30 | Info | 'Server Running at 8080' | 
+02:06:31 | Info | 'Server Running at 8080' | 
+02:06:37 | Info | 'Server Running at 8080' | 
+02:06:42 | Info | 'Server Running at 8080' | 
+02:07:08 | Info | 'Server Running at 8080' | 
+02:07:24 | Info | 'Server Running at 8080' | 
+02:07:41 | Info | 'Server Running at 8080' | 
+02:07:44 | Info | 'Server Running at 8080' | 
+02:07:54 | Info | 'Server Running at 8080' | 
+02:08:04 | Info | 'Server Running at 8080' | 
+02:08:06 | Info | 'Server Running at 8080' | 
+02:08:10 | Info | 'Server Running at 8080' | 
+02:08:12 | Info | 'Server Running at 8080' | 
+02:08:18 | Info | 'Server Running at 8080' | 
+02:08:20 | Info | 'Server Running at 8080' | 
+02:08:26 | Info | 'Server Running at 8080' | 
+02:08:30 | Info | 'Server Running at 8080' | 
+02:08:34 | Info | 'Server Running at 8080' | 
+02:08:44 | Info | 'Server Running at 8080' | 
+02:08:58 | Info | 'Server Running at 8080' | 
+02:09:08 | Info | 'Server Running at 8080' | 
+02:09:17 | Info | 'Server Running at 8080' | 
+02:09:21 | Info | 'Server Running at 8080' | 
+02:09:29 | Info | 'Server Running at 8080' | 
+02:09:32 | Info | 'Server Running at 8080' | 
+02:09:37 | Info | 'Server Running at 8080' | 
+02:09:39 | Info | 'Server Running at 8080' | 
+02:09:41 | Info | 'Server Running at 8080' | 
+02:09:43 | Info | 'Server Running at 8080' | 
+02:09:45 | Info | 'Server Running at 8080' | 
+02:10:43 | Info | 'Server Running at 8080' | 
+02:10:56 | Info | 'Server Running at 8080' | 
+02:11:04 | Info | 'Server Running at 8080' | 
+02:11:31 | Info | 'Server Running at 8080' | 
+02:11:33 | Info | 'Server Running at 8080' | 
+02:11:37 | Info | 'Server Running at 8080' | 
+02:11:43 | Info | 'Server Running at 8080' | 
+02:11:49 | Info | 'Server Running at 8080' | 
+02:11:53 | Info | 'Server Running at 8080' | 
+02:12:00 | Info | 'Server Running at 8080' | 
+02:12:03 | Info | 'Server Running at 8080' | 
+02:12:05 | Info | 'Server Running at 8080' | 
+02:12:31 | Info | 'Server Running at 8080' | 
+02:12:36 | Info | 'Server Running at 8080' | 
+02:12:38 | Info | 'Server Running at 8080' | 
+02:12:39 | Info | 'Server Running at 8080' | 
+02:12:51 | Info | 'Server Running at 8080' | 
+02:13:07 | Info | 'Server Running at 8080' | 
+02:13:10 | Info | 'Server Running at 8080' | 
+02:13:11 | Info | 'Server Running at 8080' | 
+02:13:14 | Info | 'Server Running at 8080' | 
+02:13:17 | Info | 'Server Running at 8080' | 
+02:13:19 | Info | 'Server Running at 8080' | 
+02:13:22 | Info | 'Server Running at 8080' | 
+02:13:24 | Info | 'Server Running at 8080' | 
+02:13:31 | Info | 'Server Running at 8080' | 
+02:13:41 | Info | 'Server Running at 8080' | 
+02:13:43 | Info | 'Server Running at 8080' | 
+02:14:00 | Info | 'Server Running at 8080' | 
+02:14:05 | Info | 'Server Running at 8080' | 
+02:14:09 | Info | 'Server Running at 8080' | 
+02:14:13 | Info | 'Server Running at 8080' | 
+02:14:16 | Info | 'Server Running at 8080' | 
+02:14:22 | Info | 'Server Running at 8080' | 
+02:14:26 | Info | 'Server Running at 8080' | 
+02:14:32 | Info | 'Server Running at 8080' | 
+02:14:36 | Info | 'Server Running at 8080' | 
+02:14:37 | Info | 'Server Running at 8080' | 
+02:14:39 | Info | 'Server Running at 8080' | 
+02:14:47 | Info | 'Server Running at 8080' | 
+02:14:50 | Info | 'Server Running at 8080' | 
+02:14:53 | Info | 'Server Running at 8080' | 
+02:15:04 | Info | 'Server Running at 8080' | 
+02:15:06 | Info | 'Server Running at 8080' | 
+02:15:07 | Info | 'Server Running at 8080' | 
+02:15:09 | Info | 'Server Running at 8080' | 
+02:15:17 | Info | 'Server Running at 8080' | 
+02:15:33 | Info | 'Server Running at 8080' | 
+02:15:35 | Info | 'Server Running at 8080' | 
+02:15:49 | Info | 'Server Running at 8080' | 
+02:15:56 | Info | 'Server Running at 8080' | 
+02:15:58 | Info | 'Server Running at 8080' | 
+02:16:01 | Info | 'Server Running at 8080' | 
+02:16:06 | Info | 'Server Running at 8080' | 
+02:16:10 | Info | 'Server Running at 8080' | 
+02:16:13 | Info | 'Server Running at 8080' | 
+02:16:18 | Info | 'Server Running at 8080' | 
+02:16:32 | Info | 'Server Running at 8080' | 
+02:16:37 | Info | 'Server Running at 8080' | 
+02:16:41 | Info | 'Server Running at 8080' | 
+02:16:49 | Info | 'Server Running at 8080' | 
+02:16:51 | Info | 'Server Running at 8080' | 
+02:16:54 | Info | 'Server Running at 8080' | 
+02:17:00 | Info | 'Server Running at 8080' | 
+02:17:02 | Info | 'Server Running at 8080' | 
+02:17:15 | Info | 'Server Running at 8080' | 
+02:17:23 | Info | 'Server Running at 8080' | 
+02:17:26 | Info | 'Server Running at 8080' | 
+02:17:28 | Info | 'Server Running at 8080' | 
+02:17:31 | Info | 'Server Running at 8080' | 
+02:17:34 | Info | 'Server Running at 8080' | 
+02:17:39 | Info | 'Server Running at 8080' | 
+02:17:47 | Info | 'Server Running at 8080' | 
+02:18:00 | Info | 'Server Running at 8080' | 
+02:18:01 | Info | 'Server Running at 8080' | 
+02:18:03 | Info | 'Server Running at 8080' | 
+02:18:04 | Info | 'Server Running at 8080' | 
+02:18:07 | Info | 'Server Running at 8080' | 
+02:18:10 | Info | 'Server Running at 8080' | 
+02:18:11 | Info | 'Server Running at 8080' | 
+02:18:13 | Info | 'Server Running at 8080' | 
+02:18:17 | Info | 'Server Running at 8080' | 
+02:18:24 | Info | 'Server Running at 8080' | 
+02:18:33 | Info | 'Server Running at 8080' | 
+02:18:37 | Info | 'Server Running at 8080' | 
+02:18:40 | Info | 'Server Running at 8080' | 
+02:18:48 | Info | 'Server Running at 8080' | 
+02:18:53 | Info | 'Server Running at 8080' | 
+02:18:56 | Info | 'Server Running at 8080' | 
+02:18:58 | Info | 'Server Running at 8080' | 
+02:19:08 | Info | 'Server Running at 8080' | 
+02:19:11 | Info | 'Server Running at 8080' | 
+02:19:14 | Info | 'Server Running at 8080' | 
+02:19:16 | Info | 'Server Running at 8080' | 
+02:19:28 | Info | 'Server Running at 8080' | 
+02:19:33 | Info | 'Server Running at 8080' | 
+02:19:40 | Info | 'Server Running at 8080' | 
+02:19:51 | Info | 'Server Running at 8080' | 
+02:19:56 | Info | 'Server Running at 8080' | 
+02:20:14 | Info | 'Server Running at 8080' | 
+02:20:18 | Info | 'Server Running at 8080' | 
+02:20:22 | Info | 'Server Running at 8080' | 
+02:20:26 | Info | 'Server Running at 8080' | 
+02:20:29 | Info | 'Server Running at 8080' | 
+02:32:48 | Info | 'Server Running at 8080' | 
+02:32:52 | Info | 'Server Running at 8080' | 
+02:33:06 | Info | 'Server Running at 8080' | 
+02:33:10 | Info | 'Server Running at 8080' | 
+02:33:13 | Info | 'Server Running at 8080' | 
+02:33:15 | Info | 'Server Running at 8080' | 
+02:33:19 | Info | 'Server Running at 8080' | 
+02:33:22 | Info | 'Server Running at 8080' | 
+02:33:27 | Info | 'Server Running at 8080' | 
+02:33:32 | Info | 'Server Running at 8080' | 
+02:33:34 | Info | 'Server Running at 8080' | 
+02:33:37 | Info | 'Server Running at 8080' | 
+02:33:45 | Info | 'Server Running at 8080' | 
+02:33:49 | Info | 'Server Running at 8080' | 
+02:33:53 | Info | 'Server Running at 8080' | 
+02:33:56 | Info | 'Server Running at 8080' | 
+02:34:03 | Info | 'Server Running at 8080' | 
+02:34:11 | Info | 'Server Running at 8080' | 
+02:34:14 | Info | 'Server Running at 8080' | 
+02:34:23 | Info | 'Server Running at 8080' | 
+02:34:26 | Info | 'Server Running at 8080' | 
+02:35:18 | Info | 'Server Running at 8080' | 
+02:35:30 | Info | 'Server Running at 8080' | 
+02:35:33 | Info | 'Server Running at 8080' | 
+02:35:40 | Info | 'Server Running at 8080' | 
+02:35:45 | Info | 'Server Running at 8080' | 
+02:36:05 | Info | 'Server Running at 8080' | 
+02:36:15 | Info | 'Server Running at 8080' | 
+02:36:18 | Info | 'Server Running at 8080' | 
+02:36:23 | Info | 'Server Running at 8080' | 
+02:36:25 | Info | 'Server Running at 8080' | 
+02:36:54 | Info | 'Server Running at 8080' | 
+02:37:04 | Info | 'Server Running at 8080' | 
+02:37:12 | Info | 'Server Running at 8080' | 
+02:38:26 | Info | 'Server Running at 8080' | 
+02:38:31 | Info | 'Server Running at 8080' | 
+02:38:33 | Info | 'Server Running at 8080' | 
+02:38:36 | Info | 'Server Running at 8080' | 
+02:38:41 | Info | 'Server Running at 8080' | 
+02:38:42 | Info | 'Server Running at 8080' | 
+02:38:48 | Info | 'Server Running at 8080' | 
+02:39:06 | Info | 'Server Running at 8080' | 
+02:39:12 | Info | 'Server Running at 8080' | 
+02:39:14 | Info | 'Server Running at 8080' | 
+02:40:29 | Info | 'Server Running at 8080' | 
+02:40:31 | Info | 'Server Running at 8080' | 
+02:40:35 | Info | 'Server Running at 8080' | 
+02:40:41 | Info | 'Server Running at 8080' | 
+02:40:44 | Info | 'Server Running at 8080' | 
+02:40:49 | Info | 'Server Running at 8080' | 
+02:40:51 | Info | 'Server Running at 8080' | 
+02:40:55 | Info | 'Server Running at 8080' | 
+02:41:06 | Info | 'Server Running at 8080' | 
+02:41:10 | Info | 'Server Running at 8080' | 
+02:41:13 | Info | 'Server Running at 8080' | 
+02:41:25 | Info | 'Server Running at 8080' | 
+02:41:26 | Info | 'Server Running at 8080' | 
+02:41:31 | Info | 'Server Running at 8080' | 
+02:41:38 | Info | 'Server Running at 8080' | 
+02:41:41 | Info | 'Server Running at 8080' | 
+02:41:47 | Info | 'Server Running at 8080' | 
+02:41:51 | Info | 'Server Running at 8080' | 
+02:41:54 | Info | 'Server Running at 8080' | 
+02:41:56 | Info | 'Server Running at 8080' | 
+02:42:03 | Info | 'Server Running at 8080' | 
+02:42:04 | Info | 'Server Running at 8080' | 
+02:42:10 | Info | 'Server Running at 8080' | 
+02:42:12 | Info | 'Server Running at 8080' | 
+02:42:14 | Info | 'Server Running at 8080' | 
+02:42:17 | Info | 'Server Running at 8080' | 
+02:42:23 | Info | 'Server Running at 8080' | 
+02:42:28 | Info | 'Server Running at 8080' | 
+02:42:29 | Info | 'Server Running at 8080' | 
+02:42:33 | Info | 'Server Running at 8080' | 
+02:42:36 | Info | 'Server Running at 8080' | 
+02:42:43 | Info | 'Server Running at 8080' | 
+02:42:45 | Info | 'Server Running at 8080' | 
+02:42:48 | Info | 'Server Running at 8080' | 
+02:43:49 | Info | 'Server Running at 8080' | 
+02:43:50 | Info | 'Server Running at 8080' | 
+02:43:59 | Info | 'Server Running at 8080' | 
+02:44:02 | Info | 'Server Running at 8080' | 
+02:44:08 | Info | 'Server Running at 8080' | 
+02:44:13 | Info | 'Server Running at 8080' | 
+02:44:25 | Info | 'Server Running at 8080' | 
+02:44:29 | Info | 'Server Running at 8080' | 
+02:44:43 | Info | 'Server Running at 8080' | 
+02:44:46 | Info | 'Server Running at 8080' | 
+02:45:36 | Info | 'Server Running at 8080' | 
+02:45:39 | Info | 'Server Running at 8080' | 
+02:45:46 | Info | 'Server Running at 8080' | 
+02:45:48 | Info | 'Server Running at 8080' | 
+02:45:56 | Info | 'Server Running at 8080' | 
+02:45:57 | Info | 'Server Running at 8080' | 
+02:45:58 | Info | 'Server Running at 8080' | 
+02:46:12 | Info | 'Server Running at 8080' | 
+02:46:21 | Info | 'Server Running at 8080' | 
+02:46:51 | Info | 'Server Running at 8080' | 
+02:47:02 | Info | 'Server Running at 8080' | 
+02:47:05 | Info | 'Server Running at 8080' | 
+02:47:08 | Info | 'Server Running at 8080' | 
+02:47:18 | Info | 'Server Running at 8080' | 
+02:47:23 | Info | 'Server Running at 8080' | 
+02:47:27 | Info | 'Server Running at 8080' | 
+02:47:31 | Info | 'Server Running at 8080' | 
+02:47:34 | Info | 'Server Running at 8080' | 
+02:47:35 | Info | 'Server Running at 8080' | 
+02:47:39 | Info | 'Server Running at 8080' | 
+02:47:41 | Info | 'Server Running at 8080' | 
+02:47:42 | Info | 'Server Running at 8080' | 
+02:47:45 | Info | 'Server Running at 8080' | 
+02:47:52 | Info | 'Server Running at 8080' | 
+02:48:02 | Info | 'Server Running at 8080' | 
+02:48:10 | Info | 'Server Running at 8080' | 
+02:48:13 | Info | 'Server Running at 8080' | 
+02:48:23 | Info | 'Server Running at 8080' | 
+02:48:29 | Info | 'Server Running at 8080' | 
+02:48:32 | Info | 'Server Running at 8080' | 
+02:48:39 | Info | 'Server Running at 8080' | 
+02:48:46 | Info | 'Server Running at 8080' | 
+02:48:47 | Info | 'Server Running at 8080' | 
+02:48:48 | Info | 'Server Running at 8080' | 
+02:48:52 | Info | 'Server Running at 8080' | 
+02:48:58 | Info | 'Server Running at 8080' | 
+02:49:00 | Info | 'Server Running at 8080' | 
+02:49:02 | Info | 'Server Running at 8080' | 
+02:49:11 | Info | 'Server Running at 8080' | 
+02:49:35 | Info | 'Server Running at 8080' | 
+02:49:40 | Info | 'Server Running at 8080' | 
+02:49:48 | Info | 'Server Running at 8080' | 
+02:50:06 | Info | 'Server Running at 8080' | 
+02:50:12 | Info | 'Server Running at 8080' | 
+02:50:15 | Info | 'Server Running at 8080' | 
+02:50:24 | Info | 'Server Running at 8080' | 
+02:50:25 | Info | 'Server Running at 8080' | 
+02:50:38 | Info | 'Server Running at 8080' | 
+02:50:46 | Info | 'Server Running at 8080' | 
+02:50:58 | Info | 'Server Running at 8080' | 
+02:51:00 | Info | 'Server Running at 8080' | 
+02:51:06 | Info | 'Server Running at 8080' | 
+02:51:07 | Info | 'Server Running at 8080' | 
+02:51:14 | Info | 'Server Running at 8080' | 
+02:51:17 | Info | 'Server Running at 8080' | 
+02:51:19 | Info | 'Server Running at 8080' | 
+02:51:21 | Info | 'Server Running at 8080' | 
+02:51:27 | Info | 'Server Running at 8080' | 
+02:52:05 | Info | 'Server Running at 8080' | 
+02:53:24 | Info | 'Server Running at 8080' | 
+02:53:31 | Info | 'Server Running at 8080' | 
+02:53:36 | Info | 'Server Running at 8080' | 
+02:53:40 | Info | 'Server Running at 8080' | 
+02:53:45 | Info | 'Server Running at 8080' | 
+02:53:55 | Info | 'Server Running at 8080' | 
+02:53:58 | Info | 'Server Running at 8080' | 
+02:54:02 | Info | 'Server Running at 8080' | 
+02:54:06 | Info | 'Server Running at 8080' | 
+02:54:10 | Info | 'Server Running at 8080' | 
+02:54:14 | Info | 'Server Running at 8080' | 
+02:54:33 | Info | 'Server Running at 8080' | 
+02:55:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+02:56:07 | Info | 'Server Running at 8080' | 
+02:56:16 | Info | 'Server Running at 8080' | 
+02:56:18 | Info | 'Server Running at 8080' | 
+02:56:23 | Info | 'Server Running at 8080' | 
+02:56:26 | Info | 'Server Running at 8080' | 
+02:56:29 | Info | 'Server Running at 8080' | 
+02:56:35 | Info | 'Server Running at 8080' | 
+02:56:37 | Info | 'Server Running at 8080' | 
+02:56:49 | Info | 'Server Running at 8080' | 
+02:56:53 | Info | 'Server Running at 8080' | 
+02:56:59 | Info | 'Server Running at 8080' | 
+02:57:04 | Info | 'Server Running at 8080' | 
+02:57:08 | Info | 'Server Running at 8080' | 
+02:57:13 | Info | 'Server Running at 8080' | 
+02:57:22 | Info | 'Server Running at 8080' | 
+02:57:40 | Info | 'Server Running at 8080' | 
+02:57:46 | Info | 'Server Running at 8080' | 
+02:57:50 | Info | 'Server Running at 8080' | 
+02:57:56 | Info | 'Server Running at 8080' | 
+02:58:00 | Info | 'Server Running at 8080' | 
+02:58:08 | Info | 'Server Running at 8080' | 
+02:58:11 | Info | 'Server Running at 8080' | 
+02:59:58 | Info | 'Server Running at 8080' | 
+02:59:59 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:25:44 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:25:51 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:32:01 | Info | 'Server Running at 8080' | 
+03:32:05 | Info | 'Server Running at 8080' | 
+03:32:18 | Info | 'Server Running at 8080' | 
+03:32:25 | Info | 'Server Running at 8080' | 
+03:32:26 | Info | 'Server Running at 8080' | 
+03:33:17 | Info | 'Server Running at 8080' | 
+03:33:19 | Info | 'Server Running at 8080' | 
+03:33:21 | Info | 'Server Running at 8080' | 
+03:33:29 | Info | 'Server Running at 8080' | 
+03:33:30 | Info | 'Server Running at 8080' | 
+03:33:54 | Info | 'Server Running at 8080' | 
+03:33:58 | Info | 'Server Running at 8080' | 
+03:34:00 | Info | 'Server Running at 8080' | 
+03:34:02 | Info | 'Server Running at 8080' | 
+03:34:05 | Info | 'Server Running at 8080' | 
+03:34:08 | Info | 'Server Running at 8080' | 
+03:34:17 | Info | 'Server Running at 8080' | 
+03:34:23 | Info | 'Server Running at 8080' | 
+03:34:40 | Info | 'Server Running at 8080' | 
+03:34:44 | Info | 'Server Running at 8080' | 
+03:34:46 | Info | 'Server Running at 8080' | 
+03:34:49 | Info | 'Server Running at 8080' | 
+03:36:01 | Info | 'Server Running at 8080' | 
+03:38:33 | Info | 'Server Running at 8080' | 
+03:39:35 | Info | 'Server Running at 8080' | 
+03:39:45 | Info | 'Server Running at 8080' | 
+03:39:53 | Info | 'Server Running at 8080' | 
+03:39:59 | Info | 'Server Running at 8080' | 
+03:40:10 | Info | 'Server Running at 8080' | 
+03:40:11 | Info | 'Server Running at 8080' | 
+03:40:19 | Info | 'Server Running at 8080' | 
+03:40:27 | Info | 'Server Running at 8080' | 
+03:40:32 | Info | 'Server Running at 8080' | 
+03:45:27 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:45:28 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:45:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:45:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:45:29 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:52:54 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:19 | Info | 'Server Running at 8080' | 
+03:53:19 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:19 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+03:53:20 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:09:17 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:09:18 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:09:25 | Info | 'Server Running at 8080' | 
+04:09:25 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:12:19 | Info | 'Server Running at 8080' | 
+04:12:24 | Info | 'Server Running at 8080' | 
+04:12:26 | Info | 'Server Running at 8080' | 
+04:12:34 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:19:41 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:19:44 | Info | '[AUTH ROUTER] - Requested route "/"' | 
+04:20:57 | Info | 'Server Running at 8080' | 

@@ -63,6 +63,9 @@ router.post('/import', upload.single('excel'), async (req, res) => {
         const rows = XLSX.utils.sheet_to_json(sheet);
         const coordinates = [];
 
+        let initial_longitude = ""
+        let index_new_row = 0
+
         for (const row of rows) {
             const text_identifier = row.Source ?? row.source ?? row.SOURCE
             let latitude = utility.parseExcelNumber(row.N ?? row.latitude ?? row.Latitude ?? row.LATITUDE ?? row.LAT ?? row.lat ?? row.Lat)
@@ -77,9 +80,14 @@ router.post('/import', upload.single('excel'), async (req, res) => {
             }
 
             if ((marker_shape == 'triangle') && (coordinates.length != 0)) {
-                longitude = coordinates[coordinates.length -1].longitude + 0.00002
-                let to_add = (coordinates.length % 2 == 0) ? 0.00002 : -0.00002
-                latitude = coordinates[0].latitude + to_add
+                if (longitude == initial_longitude) {
+                    longitude = coordinates[coordinates.length -1].longitude + 0.00002
+                    let to_add = (coordinates.length % 2 == 0) ? 0.00002 : -0.00002
+                    latitude = coordinates[index_new_row].latitude + to_add
+                } else {
+                    initial_longitude = longitude
+                    index_new_row = coordinates.length
+                }
             }
 
             coordinates.push({

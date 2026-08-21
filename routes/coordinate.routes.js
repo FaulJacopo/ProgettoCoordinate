@@ -65,8 +65,8 @@ router.post('/import', upload.single('excel'), async (req, res) => {
 
         for (const row of rows) {
             const text_identifier = row.Source ?? row.source ?? row.SOURCE
-            const latitude = utility.parseExcelNumber(row.N ?? row.latitude ?? row.Latitude ?? row.LATITUDE ?? row.LAT ?? row.lat ?? row.Lat)
-            const longitude = utility.parseExcelNumber(row.E ?? row.longitude ?? row.Longitude ?? row.LONGITUDE ?? row.LNG ?? row.lng ?? row.long ?? row.Long)
+            let latitude = utility.parseExcelNumber(row.N ?? row.latitude ?? row.Latitude ?? row.LATITUDE ?? row.LAT ?? row.lat ?? row.Lat)
+            let longitude = utility.parseExcelNumber(row.E ?? row.longitude ?? row.Longitude ?? row.LONGITUDE ?? row.LNG ?? row.lng ?? row.long ?? row.Long)
             const cell_id = utility.parseExcelNumber(row.CellID ?? row.cell_id ?? row['Cell ID'] ?? row.CELL_ID)
             const power = utility.parseExcelNumber(row.Adress ?? row.adress ?? row.Potenza ?? row.potenza ?? row.Power ?? row.power)
             const MCC = utility.parseExcelNumber(row.MCC)
@@ -74,6 +74,12 @@ router.post('/import', upload.single('excel'), async (req, res) => {
 
             if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || !Number.isInteger(cell_id)) {
                 continue;
+            }
+
+            if ((marker_shape == 'triangle') && (coordinates.length != 0)) {
+                longitude = coordinates[coordinates.length -1].longitude + 0.00002
+                let to_add = (coordinates.length % 2 == 0) ? 0.00002 : -0.00002
+                latitude = coordinates[0].latitude + to_add
             }
 
             coordinates.push({
